@@ -11,12 +11,21 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.98.0",
+    "axios": "^1.13.5",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "form-data": "^4.0.5",
     "http-proxy-middleware": "^3.0.5",
+    "leaflet": "^1.9.4",
+    "pdfjs-dist": "^5.4.624",
+    "puppeteer": "^24.37.5",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-leaflet": "^5.0.0",
+    "react-leaflet-markercluster": "^5.0.0-rc.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
