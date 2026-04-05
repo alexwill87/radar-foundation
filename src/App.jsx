@@ -1,7 +1,39 @@
 import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
+import { supabase, DEMO_MODE } from "./supabaseClient";
 import { useAuth } from "./context/AuthContext";
 import AuthScreen from "./components/AuthScreen";
+
+// ─── DEMO DATA ───────────────────────────────────────────────────────────────
+const DEMO_JOBS = [
+  { id: "demo_1", title: "Data Engineer", company: "TotalEnergies", location: "Paris, France", contract: "CDI", source: "France Travail", date: new Date().toISOString(), url: "#", secteur: "Energy", tags: ["Python", "SQL", "Spark", "AWS"], description: "We are looking for a Data Engineer to join our Digital Factory team. You will design and maintain data pipelines, work with cloud infrastructure (AWS), and collaborate with data scientists. Experience with Python, SQL, and Spark is required.", latitude: 48.8566, longitude: 2.3522 },
+  { id: "demo_2", title: "GIS Analyst", company: "SNCF Reseau", location: "Lyon, France", contract: "CDI", source: "APEC", date: new Date().toISOString(), url: "#", secteur: "Transport", tags: ["PostGIS", "QGIS", "Python", "GeoPandas"], description: "Join our geospatial team to analyze and optimize the French rail network. You will work with PostGIS, QGIS, and Python to process spatial data and create interactive maps.", latitude: 45.764, longitude: 4.8357 },
+  { id: "demo_3", title: "Spatial Data Analyst", company: "Airbus Defence & Space", location: "Toulouse, France", contract: "CDI", source: "Welcome to the Jungle", date: new Date().toISOString(), url: "#", secteur: "Aerospace", tags: ["Remote Sensing", "Python", "Machine Learning", "GIS"], description: "Airbus Defence & Space is hiring a Spatial Data Analyst to process satellite imagery and geospatial datasets. Strong skills in Python, ML, and remote sensing required.", latitude: 43.6047, longitude: 1.4442 },
+  { id: "demo_4", title: "ML Engineer - NLP", company: "Dataiku", location: "Paris, France", contract: "CDI", source: "LinkedIn", date: new Date().toISOString(), url: "#", secteur: "Tech", tags: ["Python", "NLP", "Transformers", "MLOps"], description: "Build and deploy NLP models at scale. Experience with transformers, PyTorch, and MLOps best practices.", latitude: 48.8738, longitude: 2.2950 },
+  { id: "demo_5", title: "Data Scientist - Climate", company: "Veolia", location: "Nantes, France", contract: "CDD 18 mois", source: "Indeed", date: new Date().toISOString(), url: "#", secteur: "Environment", tags: ["Python", "R", "Statistics", "Climate"], description: "Model climate impact on water resources. Strong statistical background and environmental domain knowledge required.", latitude: 47.2184, longitude: -1.5536 },
+  { id: "demo_6", title: "Junior Geomatics Developer", company: "IGN", location: "Saint-Mande, France", contract: "Stage", source: "France Travail", date: new Date().toISOString(), url: "#", secteur: "Public", tags: ["JavaScript", "Leaflet", "PostGIS", "Docker"], description: "6-month internship at IGN developing web mapping applications with Leaflet and PostGIS.", latitude: 48.8449, longitude: 2.4225 },
+  { id: "demo_7", title: "Freelance Data Pipeline Engineer", company: "Malt Mission", location: "Remote", contract: "Freelance", source: "Malt", date: new Date().toISOString(), url: "#", secteur: "Tech", tags: ["Python", "Airflow", "dbt", "BigQuery"], description: "3-month mission to build data pipelines with Airflow and dbt on GCP.", latitude: 48.8566, longitude: 2.3522 },
+  { id: "demo_8", title: "Research Engineer - Urban Analytics", company: "CEA", location: "Saclay, France", contract: "CDD", source: "APEC", date: new Date().toISOString(), url: "#", secteur: "Research", tags: ["Python", "Deep Learning", "Computer Vision", "GIS"], description: "Apply deep learning to satellite imagery for urban growth analysis. PhD preferred.", latitude: 48.7276, longitude: 2.1690 },
+];
+
+const DEMO_ANALYSES = {
+  demo_1: { score: 81, points_forts: ["Strong Python + SQL skills match", "Cloud experience aligns with AWS requirement", "Data pipeline experience directly relevant"], points_faibles: ["Spark experience could be deeper"], lacunes: ["No specific AWS certification mentioned"], conseil: "Lead with your data pipeline projects and quantify the data volumes you've handled." },
+  demo_2: { score: 91, points_forts: ["PostGIS is a core strength", "Python + GeoPandas expertise directly relevant", "Geomatics background is perfect fit"], points_faibles: ["Rail sector experience is new"], lacunes: [], conseil: "This is an excellent match. Emphasize spatial analysis projects and mention any transport-related GIS work." },
+  demo_3: { score: 77, points_forts: ["Python + ML skills match well", "GIS background is a strong differentiator"], points_faibles: ["Remote sensing experience may need strengthening", "Aerospace domain is new"], lacunes: ["Satellite imagery processing experience"], conseil: "Highlight any projects involving image analysis or classification. Mention transferable GIS skills." },
+  demo_4: { score: 65, points_forts: ["Python expertise is solid", "ML fundamentals are strong"], points_faibles: ["NLP specialization may be limited", "No mention of transformer experience"], lacunes: ["PyTorch", "NLP-specific projects"], conseil: "Be honest about NLP being a growth area. Show willingness to learn and highlight any text processing projects." },
+  demo_5: { score: 88, points_forts: ["Python + R + statistics background", "Environmental data experience", "Geospatial analysis skills transferable to climate modeling"], points_faibles: ["Climate-specific modeling experience to demonstrate"], lacunes: [], conseil: "Great match. Connect your spatial analysis work to environmental applications. Mention any climate-related coursework." },
+};
+
+const DEMO_CANDIDATURES = [
+  { id: "cand_1", user_id: "demo-user-001", date_candidature: "2026-04-03", titre_poste: "GIS Analyst", entreprise: "SNCF Reseau", source: "APEC", contrat: "CDI", localisation: "Lyon", statut: "sent", score_compatibilite: 91, latitude: 45.764, longitude: 4.8357, points_forts: ["PostGIS expert"], points_faibles: [], lacunes: [], conseil: "", cv_latex: "", notes: "Sent via APEC portal. Recruiter viewed profile.", url_offre: "#", description_offre: "" },
+  { id: "cand_2", user_id: "demo-user-001", date_candidature: "2026-04-01", titre_poste: "Data Scientist - Climate", entreprise: "Veolia", source: "Indeed", contrat: "CDD", localisation: "Nantes", statut: "interview", score_compatibilite: 88, latitude: 47.2184, longitude: -1.5536, points_forts: ["Strong stats background"], points_faibles: [], lacunes: [], conseil: "", cv_latex: "", notes: "Phone screen scheduled April 8. Prepare climate modeling questions.", url_offre: "#", description_offre: "" },
+  { id: "cand_3", user_id: "demo-user-001", date_candidature: "2026-03-28", titre_poste: "Spatial Data Analyst", entreprise: "Airbus", source: "WTTJ", contrat: "CDI", localisation: "Toulouse", statut: "response received", score_compatibilite: 77, latitude: 43.6047, longitude: 1.4442, points_forts: ["GIS + ML combo"], points_faibles: [], lacunes: [], conseil: "", cv_latex: "", notes: "Asked for a coding test. Need to prepare remote sensing basics.", url_offre: "#", description_offre: "" },
+  { id: "cand_4", user_id: "demo-user-001", date_candidature: "2026-03-25", titre_poste: "Data Engineer", entreprise: "BNP Paribas", source: "LinkedIn", contrat: "CDI", localisation: "Paris", statut: "rejected", score_compatibilite: 72, latitude: 48.8566, longitude: 2.3522, points_forts: [], points_faibles: [], lacunes: [], conseil: "", cv_latex: "", notes: "Position filled internally.", url_offre: "#", description_offre: "" },
+  { id: "cand_5", user_id: "demo-user-001", date_candidature: "2026-04-04", titre_poste: "Data Engineer", entreprise: "TotalEnergies", source: "France Travail", contrat: "CDI", localisation: "Paris", statut: "to send", score_compatibilite: 81, latitude: 48.8566, longitude: 2.3522, points_forts: ["Pipeline experience"], points_faibles: [], lacunes: [], conseil: "", cv_latex: "", notes: "CV tailored and ready. Apply before April 10.", url_offre: "#", description_offre: "" },
+];
+
+const DEMO_PROFIL = [
+  { id: "prof_1", user_id: "demo-user-001", type: "cv_upload", titre: "Main CV - Data & Geomatics", contenu: "Data Scientist & Geomatics Engineer\n\nMaster of Science in Geomatics Engineering - ENSG (2023-2025)\nBSc Computer Science - Paris Saclay (2020-2023)\n\nExperience:\n- Data Science Intern - Institut Curie (2024-2025): Built ETL pipelines in Python/SQL for 44,000 clinical records. Predictive ML model with 82% recall and AUC 0.85. Geocoding and spatial analysis with GeoPandas.\n- GIS Developer Intern - IGN (2023): Developed web mapping applications using Leaflet and PostGIS. Processed 2TB of LiDAR point cloud data.\n- Research Assistant - ENSG Lab (2022-2023): Satellite image classification using Random Forest and CNNs. Published poster at ISPRS conference.\n\nSkills: Python, SQL, PostGIS, QGIS, GeoPandas, Leaflet, Machine Learning, scikit-learn, Docker, Git, LaTeX, JavaScript, R\n\nLanguages: French (native), English (C1), Arabic (B2)", actif: true, created_at: "2026-03-15" },
+];
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -1158,7 +1190,7 @@ export default function App() {
   const { user, loading: authLoading } = useAuth();
 
   const [activeTab, setActiveTab] = useState("jobs");
-  const [analyses, setAnalyses] = useState({});
+  const [analyses, setAnalyses] = useState(DEMO_MODE ? DEMO_ANALYSES : {});
   const [analyzing, setAnalyzing] = useState({});
   const [generating, setGenerating] = useState({});
   const [latexModal, setLatexModal] = useState(null);
@@ -1174,7 +1206,7 @@ export default function App() {
   const [stopAnalysis, setStopAnalysis] = useState(false);
 
   const [fetchingFT, setFetchingFT] = useState(false);
-  const [ftOffres, setFtOffres] = useState([]);
+  const [ftOffres, setFtOffres] = useState(DEMO_MODE ? DEMO_JOBS : []);
 
   const [fetchingWTTJ, setFetchingWTTJ] = useState(false);
   const [wttjOffres, setWttjOffres] = useState([]);
@@ -1546,6 +1578,18 @@ export default function App() {
       )}
 
       <div style={{ minHeight: "100vh", background: "#080c14", fontFamily: "'Sora', sans-serif", color: "#f1f5f9" }}>
+        {/* Demo banner */}
+        {DEMO_MODE && (
+          <div style={{ background: "linear-gradient(90deg, #1b4ef3, #7c3aed)", padding: "8px 20px", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
+            <span style={{ fontSize: 12, fontFamily: "'Space Mono', monospace", color: "#fff" }}>
+              Live Demo &mdash; Pre-loaded with sample data to showcase Radar's features
+            </span>
+            <a href="/landing.html" style={{ fontSize: 11, fontFamily: "'Space Mono', monospace", color: "#c4b5fd", textDecoration: "underline" }}>
+              &larr; Back to landing page
+            </a>
+          </div>
+        )}
+
         {/* Header */}
         <div style={{ borderBottom: "1px solid #1e293b", background: "#0d1117", padding: "0 32px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "16px 0",
@@ -1578,7 +1622,7 @@ export default function App() {
                 </div>
               ))}
               <button
-                onClick={() => supabase.auth.signOut()}
+                onClick={() => { if (!DEMO_MODE) supabase.auth.signOut(); }}
                 style={{ padding: "6px 14px", borderRadius: 8,
                   border: "1px solid #1e293b", background: "transparent",
                   color: "#64748b", cursor: "pointer",
@@ -1787,6 +1831,11 @@ export default function App() {
 // Separate component to run data loading effects after user is confirmed
 function DataLoader({ userId, setProfilItems, setCandidatures }) {
   useEffect(() => {
+    if (DEMO_MODE) {
+      setProfilItems(DEMO_PROFIL);
+      setCandidatures(DEMO_CANDIDATURES);
+      return;
+    }
     loadProfil(userId).then(setProfilItems);
     loadCandidatures(userId).then(setCandidatures);
   }, [userId]);

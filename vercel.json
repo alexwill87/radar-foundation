@@ -1,8 +1,6 @@
 {
-  "buildCommand": "",
-  "outputDirectory": ".",
-  "framework": null,
+  "framework": "vite",
   "rewrites": [
-    { "source": "/", "destination": "/radar-landing-v3.html" }
+    { "source": "/landing", "destination": "/landing.html" }
   ]
 }
