@@ -1,13 +1,752 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>job-hunter</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Radar — Land the right job, faster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --ink:     #0d1117;
+  --ink2:    #434956;
+  --ink3:    #8b91a0;
+  --rule:    #e8eaef;
+  --rule2:   #f3f4f8;
+  --bg:      #ffffff;
+  --bg2:     #f8f9fc;
+  --bg3:     #f0f2f7;
+  --blue:    #1b4ef3;
+  --blue2:   #0f3acc;
+  --blue-bg: rgba(27,78,243,.06);
+  --blue-b:  rgba(27,78,243,.16);
+  --green:   #0a8a5c;
+  --green-bg:rgba(10,138,92,.07);
+  --amber:   #c96b00;
+  --amber-bg:rgba(201,107,0,.07);
+  --red:     #c92a2a;
+  --red-bg:  rgba(201,42,42,.07);
+  --sans:    'DM Sans',sans-serif;
+  --serif:   'Syne',sans-serif;
+  --mono:    'DM Mono',monospace;
+  --shadow:  0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.06);
+  --shadow2: 0 2px 8px rgba(0,0,0,.05), 0 16px 48px rgba(0,0,0,.09);
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:64px;display:flex;align-items:center;
+  padding:0 2.5rem;justify-content:space-between;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--serif);font-weight:700;font-size:1.1rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-.02em;
+}
+.nav-logo-icon{
+  width:28px;height:28px;
+  border:1.5px solid var(--ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.nav-logo-icon::before{
+  content:'';position:absolute;width:1px;height:100%;background:var(--ink);opacity:.25;
+}
+.nav-logo-icon::after{
+  content:'';position:absolute;height:1px;width:100%;background:var(--ink);opacity:.25;
+}
+.nav-logo-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--blue);
+  position:absolute;right:7px;top:7px;
+}
+.nav-center{display:flex;gap:2rem}
+.nav-center a{font-size:.85rem;color:var(--ink2);text-decoration:none;font-weight:400;transition:color .2s}
+.nav-center a:hover{color:var(--ink)}
+.nav-cta{
+  font-size:.84rem;font-weight:500;
+  background:var(--ink);color:#fff;
+  padding:.5rem 1.3rem;border-radius:8px;
+  text-decoration:none;letter-spacing:-.01em;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--blue)}
+
+/* ─── HERO ─── */
+.hero{
+  padding:130px 2.5rem 80px;
+  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;align-items:center;
+}
+.hero-dot-grid{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,#d0d5e0 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:radial-gradient(ellipse 70% 80% at 50% 40%,black,transparent);
+  opacity:.55;
+}
+.hero-inner{
+  max-width:1140px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+  position:relative;z-index:2;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);border:1px solid var(--blue-b);background:var(--blue-bg);
+  padding:.28rem .9rem;border-radius:100px;margin-bottom:1.8rem;
+}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(2.6rem,4.5vw,3.9rem);
+  line-height:1.04;letter-spacing:-.04em;
+  color:var(--ink);margin-bottom:1.3rem;
+}
+h1 .accent{color:var(--blue)}
+.hero-sub{
+  font-size:1.05rem;color:var(--ink2);line-height:1.75;
+  max-width:460px;margin-bottom:2.5rem;font-weight:300;
+}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.9rem;font-weight:500;letter-spacing:-.01em;
+  background:var(--ink);color:#fff;
+  padding:.78rem 1.8rem;border-radius:8px;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--blue);transform:translateY(-1px)}
+.btn-outline{
+  display:inline-flex;align-items:center;
+  font-size:.9rem;font-weight:400;color:var(--ink2);
+  padding:.78rem 1.5rem;border-radius:8px;text-decoration:none;
+  border:1px solid var(--rule);transition:border-color .2s,color .2s;
+}
+.btn-outline:hover{border-color:var(--ink3);color:var(--ink)}
+.hero-proof{
+  display:flex;align-items:center;gap:1.2rem;
+  font-size:.8rem;color:var(--ink3);
+}
+.hero-proof-item{display:flex;align-items:center;gap:6px}
+.hero-proof-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ink3)}
+
+/* hero UI card */
+.hero-visual{position:relative}
+.ui-card{
+  background:var(--bg);border:1px solid var(--rule);
+  border-radius:16px;padding:1.4rem;
+  box-shadow:var(--shadow2);
+}
+.ui-card-top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.3rem;
+}
+.ui-card-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.badge{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;
+  padding:.18rem .6rem;border-radius:100px;display:inline-flex;align-items:center;gap:5px;
+}
+.badge.green{background:var(--green-bg);color:var(--green);border:1px solid rgba(10,138,92,.2)}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-b)}
+.badge.amber{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(201,107,0,.2)}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+.score-row{display:flex;align-items:center;gap:1.3rem;margin-bottom:1.3rem}
+.score-ring-wrap{flex-shrink:0}
+.score-details{flex:1}
+.score-position{font-family:var(--serif);font-weight:700;font-size:.95rem;color:var(--ink);margin-bottom:.15rem;letter-spacing:-.01em}
+.score-company{font-size:.78rem;color:var(--ink3);margin-bottom:.8rem}
+.skill-bars{display:flex;flex-direction:column;gap:.5rem}
+.skill-row{display:flex;align-items:center;gap:.6rem}
+.skill-name{font-family:var(--mono);font-size:.59rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink3);min-width:72px}
+.skill-track{flex:1;height:3px;background:var(--rule2);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;border-radius:2px;animation:barIn 1s cubic-bezier(.4,0,.2,1) both}
+@keyframes barIn{from{width:0!important}}
+.skill-fill.b{background:var(--blue);animation-delay:.0s}
+.skill-fill.g{background:var(--green);animation-delay:.12s}
+.skill-fill.a{background:var(--amber);animation-delay:.24s}
+.skill-fill.b2{background:var(--blue);animation-delay:.36s}
+.skill-pct{font-family:var(--mono);font-size:.59rem;color:var(--ink3);min-width:26px;text-align:right}
+.divider{height:1px;background:var(--rule);margin:1.1rem 0}
+.insight{background:var(--bg2);border:1px solid var(--rule);border-radius:8px;padding:.8rem 1rem}
+.insight-label{font-family:var(--mono);font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.35rem}
+.insight-text{font-size:.81rem;color:var(--ink2);line-height:1.6;font-style:italic}
+.chip-row{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem}
+.chip{font-family:var(--mono);font-size:.59rem;letter-spacing:.04em;padding:.17rem .55rem;border-radius:100px}
+.chip.g{background:var(--green-bg);color:var(--green);border:1px solid rgba(10,138,92,.18)}
+.chip.a{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(201,107,0,.18)}
+.chip.r{background:var(--red-bg);color:var(--red);border:1px solid rgba(201,42,42,.18)}
+
+/* floating secondary card */
+.float-card{
+  position:absolute;bottom:-28px;left:-36px;
+  background:var(--bg);border:1px solid var(--rule);border-radius:12px;
+  padding:.9rem 1.1rem;box-shadow:var(--shadow2);
+  display:flex;align-items:center;gap:.9rem;min-width:200px;
+}
+.float-card-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--blue-bg);
+  border:1px solid var(--blue-b);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.float-card-icon svg{width:15px;height:15px}
+.float-card-title{font-family:var(--serif);font-weight:600;font-size:.8rem;color:var(--ink);margin-bottom:.1rem}
+.float-card-sub{font-family:var(--mono);font-size:.59rem;color:var(--ink3);letter-spacing:.04em}
+
+/* ─── SECTION COMMONS ─── */
+.wrap{max-width:1140px;margin:0 auto;padding:0 2.5rem}
+section{padding:6rem 0}
+.section-tag{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.9rem;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.section-tag::after{content:'';height:1px;width:36px;background:var(--blue-b)}
+h2{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(1.8rem,3vw,2.65rem);
+  letter-spacing:-.035em;line-height:1.1;color:var(--ink);margin-bottom:.9rem;
+}
+.section-lead{font-size:.97rem;color:var(--ink2);max-width:500px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+
+/* ─── PROBLEM ─── */
+.problem-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5.5rem 0}
+.problem-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start}
+.problem-left h2{margin-bottom:1rem}
+.problem-left p{font-size:.93rem;color:var(--ink2);line-height:1.75;font-weight:300}
+.problem-cards{display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.problem-card{
+  background:var(--bg);padding:1.4rem 1.6rem;
+  display:flex;gap:1.2rem;align-items:flex-start;
+  transition:background .2s;
+}
+.problem-card:hover{background:var(--bg2)}
+.problem-num{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--ink3);
+  min-width:20px;padding-top:2px;
+}
+.problem-title{font-family:var(--serif);font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em}
+.problem-desc{font-size:.84rem;color:var(--ink2);line-height:1.65}
+
+/* ─── HOW IT WORKS ─── */
+.hiw-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.steps{display:flex;flex-direction:column}
+.step-item{
+  display:flex;gap:1.3rem;padding:1.5rem 0;
+  border-bottom:1px solid var(--rule);position:relative;
+}
+.step-item:first-child{padding-top:0}
+.step-item:last-child{border-bottom:none;padding-bottom:0}
+.step-num{
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--ink3);
+  flex-shrink:0;margin-top:1px;background:var(--bg);
+}
+.step-item.active .step-num{
+  background:var(--blue);border-color:var(--blue);color:#fff;
+}
+.step-body{}
+.step-label{font-family:var(--serif);font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em}
+.step-desc{font-size:.83rem;color:var(--ink2);line-height:1.65}
+
+/* pipeline mockup */
+.pipeline-wrap{
+  border:1px solid var(--rule);border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow2);background:var(--bg);
+}
+.pipeline-header{
+  padding:1rem 1.4rem;border-bottom:1px solid var(--rule);background:var(--bg2);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.pipeline-h-title{font-family:var(--serif);font-weight:600;font-size:.88rem;color:var(--ink)}
+.pipeline-h-count{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--ink3)}
+.pipeline-row{
+  padding:.9rem 1.4rem;border-bottom:1px solid var(--rule2);
+  display:flex;align-items:center;gap:.9rem;
+  transition:background .15s;cursor:default;
+}
+.pipeline-row:hover{background:var(--bg2)}
+.pipeline-row:last-child{border-bottom:none}
+.p-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.p-info{flex:1;min-width:0}
+.p-title{font-size:.83rem;font-weight:500;color:var(--ink);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-co{font-size:.73rem;color:var(--ink3)}
+.p-score{font-family:var(--mono);font-size:.7rem;min-width:32px;text-align:right}
+.p-status{
+  font-family:var(--mono);font-size:.61rem;letter-spacing:.04em;
+  padding:.17rem .6rem;border-radius:100px;white-space:nowrap;min-width:78px;text-align:center;
+}
+.ps-draft{background:rgba(27,78,243,.07);color:var(--blue)}
+.ps-sent{background:rgba(10,138,92,.07);color:var(--green)}
+.ps-interview{background:rgba(201,107,0,.07);color:var(--amber)}
+.ps-waiting{background:var(--bg3);color:var(--ink3)}
+.ps-offer{background:rgba(10,138,92,.12);color:var(--green);font-weight:500}
+
+/* ─── BENEFITS ─── */
+.benefits-section{background:var(--ink);color:#fff}
+.benefits-section h2{color:#fff}
+.benefits-section .section-tag{color:rgba(255,255,255,.45)}
+.benefits-section .section-tag::after{background:rgba(255,255,255,.15)}
+.benefits-section .section-lead{color:rgba(255,255,255,.5)}
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+.ben-card{
+  background:var(--ink);padding:2.2rem 2rem;
+  transition:background .2s;position:relative;overflow:hidden;
+}
+.ben-card:hover{background:#151b28}
+.ben-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,transparent,rgba(27,78,243,.5),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.ben-card:hover::before{opacity:1}
+.ben-icon{
+  width:38px;height:38px;border-radius:9px;
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;
+}
+.ben-icon svg{width:16px;height:16px;stroke:rgba(255,255,255,.65);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ben-title{font-family:var(--serif);font-weight:600;font-size:1rem;color:#fff;margin-bottom:.5rem;letter-spacing:-.01em}
+.ben-desc{font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7}
+.ben-outcome{
+  display:inline-block;margin-top:1rem;
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(27,78,243,.9);background:rgba(27,78,243,.12);
+  border:1px solid rgba(27,78,243,.25);padding:.2rem .65rem;border-radius:100px;
+}
+
+/* ─── METRICS ─── */
+.metrics-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.metric{
+  padding:2.5rem 2rem;text-align:center;border-right:1px solid var(--rule);
+}
+.metric:last-child{border-right:none}
+.metric-num{
+  font-family:var(--serif);font-weight:800;font-size:2.6rem;
+  color:var(--ink);letter-spacing:-.04em;display:block;line-height:1;margin-bottom:.4rem;
+}
+.metric-num span{color:var(--blue)}
+.metric-label{font-size:.83rem;color:var(--ink3);font-weight:300;line-height:1.5}
+
+/* ─── CTA ─── */
+.cta-section{padding:7rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-ring{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;pointer-events:none;
+}
+.cta-section h2{font-size:clamp(2rem,4vw,3.2rem);max-width:600px;margin:0 auto .9rem;position:relative;z-index:1}
+.cta-section p{
+  color:var(--ink2);max-width:420px;margin:0 auto 2.5rem;
+  font-size:.97rem;position:relative;z-index:1;
+}
+.cta-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--bg);border-top:1px solid var(--rule);
+  padding:1.8rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-logo{font-family:var(--serif);font-weight:700;font-size:.95rem;color:var(--ink);letter-spacing:-.02em}
+.footer-copy{font-family:var(--mono);font-size:.62rem;color:var(--ink3);letter-spacing:.04em}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.82rem;color:var(--ink3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--ink)}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.08s}
+.reveal-delay-2{transition-delay:.16s}
+.reveal-delay-3{transition-delay:.24s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:980px){
+  nav{padding:0 1.5rem}
+  .nav-center{display:none}
+  .hero{padding:100px 1.5rem 60px}
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .float-card{display:none}
+  .wrap{padding:0 1.5rem}
+  section{padding:4rem 0}
+  .problem-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hiw-grid{grid-template-columns:1fr;gap:2.5rem}
+  .ben-grid{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(2){border-right:none}
+  .metric:nth-child(3){border-right:1px solid var(--rule)}
+  .metric:nth-child(3),.metric:nth-child(4){border-top:1px solid var(--rule)}
+  .cta-section{padding:5rem 0}
+  .cta-ring{width:400px;height:400px}
+  footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <div class="nav-logo-dot"></div>
+    </div>
+    Radar
+  </a>
+  <div class="nav-center">
+    <a href="#problem">Why Radar</a>
+    <a href="#how">How it works</a>
+    <a href="#benefits">Features</a>
+  </div>
+  <a href="#cta" class="nav-cta">Get started</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-dot-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag"><div class="hero-tag-dot"></div>AI-powered job search</div>
+      <h1>Land the right job.<br/><span class="accent">Stop guessing.</span></h1>
+      <p class="hero-sub">Radar analyses every job posting against your profile, writes a tailored CV for each application, and tracks every opportunity — so you apply with precision, not hope.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">Start for free  →</a>
+        <a href="#how" class="btn-outline">See how it works</a>
+      </div>
+      <div class="hero-proof">
+        <div class="hero-proof-item">No setup required</div>
+        <div class="hero-proof-item">AI-generated CVs</div>
+        <div class="hero-proof-item">Real-time tracking</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="ui-card reveal">
+        <div class="ui-card-top">
+          <div class="ui-card-label">Compatibility analysis</div>
+          <div class="badge green"><div class="badge-dot"></div>Strong match</div>
+        </div>
+
+        <div class="score-row">
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 88 88" width="88" height="88">
+              <circle cx="44" cy="44" r="36" fill="none" stroke="#f0f2f7" stroke-width="6"/>
+              <circle cx="44" cy="44" r="36" fill="none" stroke="#1b4ef3" stroke-width="6"
+                stroke-dasharray="226" stroke-dashoffset="43"
+                stroke-linecap="round" transform="rotate(-90 44 44)"
+                style="animation:ringIn 1.3s ease both"/>
+              <style>@keyframes ringIn{from{stroke-dashoffset:226}to{stroke-dashoffset:43}}</style>
+              <text x="44" y="40" text-anchor="middle" font-family="Syne" font-weight="800" font-size="20" fill="#0d1117">81</text>
+              <text x="44" y="53" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#8b91a0" letter-spacing="1">/100</text>
+            </svg>
+          </div>
+          <div class="score-details">
+            <div class="score-position">Data Engineer</div>
+            <div class="score-company">TotalEnergies · Paris, France</div>
+            <div class="skill-bars">
+              <div class="skill-row">
+                <div class="skill-name">Skills</div>
+                <div class="skill-track"><div class="skill-fill b" style="width:88%"></div></div>
+                <div class="skill-pct">88%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-name">Experience</div>
+                <div class="skill-track"><div class="skill-fill g" style="width:76%"></div></div>
+                <div class="skill-pct">76%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-name">Sector fit</div>
+                <div class="skill-track"><div class="skill-fill a" style="width:92%"></div></div>
+                <div class="skill-pct">92%</div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-name">Education</div>
+                <div class="skill-track"><div class="skill-fill b2" style="width:80%"></div></div>
+                <div class="skill-pct">80%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="insight">
+          <div class="insight-label">AI recommendation</div>
+          <div class="insight-text">"Lead with your PostGIS experience and spatial analysis work — directly aligned with the role's core requirements."</div>
+        </div>
+        <div class="chip-row">
+          <span class="chip g">PostGIS — strong match</span>
+          <span class="chip g">Python — strong match</span>
+          <span class="chip a">R — partial</span>
+          <span class="chip r">Spark — gap identified</span>
+        </div>
+      </div>
+
+      <div class="float-card reveal reveal-delay-2">
+        <div class="float-card-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#1b4ef3" stroke-width="1.5" stroke-linecap="round">
+            <path d="M2 12l4-4 3 3 5-7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="float-card-title">CV generated</div>
+          <div class="float-card-sub">LaTeX · Ready to compile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem-section" id="problem">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="problem-left">
+        <div class="section-tag">The problem</div>
+        <h2>Job searching is broken by default</h2>
+        <p>Most people send the same CV to every job, apply without knowing if they're qualified, and lose track of every application they've made. It's exhausting — and it produces poor results. Radar fixes all three.</p>
+      </div>
+      <div class="problem-cards reveal">
+        <div class="problem-card">
+          <div class="problem-num">01</div>
+          <div>
+            <div class="problem-title">You apply blind</div>
+            <div class="problem-desc">You read a job description but have no way to know how well you actually match it. You either over-apply to roles where you have no chance, or under-apply to ones you'd be perfect for.</div>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-num">02</div>
+          <div>
+            <div class="problem-title">Your CV is generic</div>
+            <div class="problem-desc">Tailoring a CV properly for every role takes hours. So most people send the same one. Hiring managers see it — and the application goes straight to the bottom of the pile.</div>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-num">03</div>
+          <div>
+            <div class="problem-title">You lose track</div>
+            <div class="problem-desc">After ten applications, you can't remember who you applied to, what you said, or what stage you're at. Following up feels awkward because the context is lost.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="hiw-grid">
+      <div>
+        <div class="section-tag">How it works</div>
+        <h2>Three steps to a smarter job search</h2>
+        <p class="section-lead">Radar turns the chaos of job hunting into a structured, intelligent process — from the moment you see a posting to the day you sign an offer.</p>
+        <div class="steps reveal">
+          <div class="step-item active">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <div class="step-label">Build your profile once</div>
+              <div class="step-desc">Upload your CV and add your experience. Radar reads and understands your background — skills, sector expertise, education. The richer your profile, the sharper every analysis becomes.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <div class="step-label">Analyse any job posting instantly</div>
+              <div class="step-desc">Select a role from APEC, LinkedIn, Indeed, Welcome to the Jungle, or paste any job description. Radar scores your fit, identifies your strengths and gaps, and tells you exactly how to position yourself.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <div class="step-label">Apply with a CV written for that role</div>
+              <div class="step-desc">Radar generates a professional LaTeX CV tailored to the specific posting — not a generic template. Every application goes out with the best possible version of your story for that opportunity.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <div class="step-label">Track every application in one place</div>
+              <div class="step-desc">Log each application, update its status as things progress, add notes from interviews, and see all your opportunities mapped geographically. Nothing falls through the cracks.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div class="pipeline-wrap">
+          <div class="pipeline-header">
+            <div class="pipeline-h-title">My applications</div>
+            <div class="pipeline-h-count">8 active</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#1b4ef3"></div>
+            <div class="p-info">
+              <div class="p-title">Data Engineer</div>
+              <div class="p-co">TotalEnergies · Paris</div>
+            </div>
+            <div class="p-score" style="color:#1b4ef3">81</div>
+            <div class="p-status ps-draft">CV ready</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#0a8a5c"></div>
+            <div class="p-info">
+              <div class="p-title">GIS Analyst</div>
+              <div class="p-co">SNCF · Lyon</div>
+            </div>
+            <div class="p-score" style="color:#0a8a5c">91</div>
+            <div class="p-status ps-sent">Sent</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#c96b00"></div>
+            <div class="p-info">
+              <div class="p-title">Spatial Data Analyst</div>
+              <div class="p-co">Airbus Defence · Toulouse</div>
+            </div>
+            <div class="p-score" style="color:#c96b00">77</div>
+            <div class="p-status ps-interview">Interview</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#8b91a0"></div>
+            <div class="p-info">
+              <div class="p-title">Research Engineer</div>
+              <div class="p-co">CEA · Saclay</div>
+            </div>
+            <div class="p-score" style="color:#8b91a0">68</div>
+            <div class="p-status ps-waiting">Waiting</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#0a8a5c"></div>
+            <div class="p-info">
+              <div class="p-title">Environmental Data Scientist</div>
+              <div class="p-co">Veolia · Nantes</div>
+            </div>
+            <div class="p-score" style="color:#0a8a5c">88</div>
+            <div class="p-status ps-offer">Offer received</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section" id="benefits">
+  <div class="wrap">
+    <div class="section-tag">What you gain</div>
+    <h2>Every unfair advantage<br/>a job seeker can have</h2>
+    <p class="section-lead">Radar doesn't just organise your search. It changes the quality of every step — from the first read of a job posting to the moment you hit send.</p>
+    <div class="ben-grid reveal">
+      <div class="ben-card">
+        <div class="ben-icon">
+          <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><circle cx="8" cy="8" r="3.5"/><circle cx="11.5" cy="5" r="1.5" fill="rgba(27,78,243,.6)" stroke="none"/></svg>
+        </div>
+        <div class="ben-title">Know your odds before you apply</div>
+        <div class="ben-desc">Radar scores your compatibility with each role across skills, experience, sector, and education. You'll know within seconds whether a posting is worth your time — and exactly how to strengthen your case.</div>
+        <div class="ben-outcome">No more guesswork</div>
+      </div>
+      <div class="ben-card">
+        <div class="ben-icon">
+          <svg viewBox="0 0 16 16"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 5h6M5 7.5h6M5 10h4"/></svg>
+        </div>
+        <div class="ben-title">A different CV for every role, instantly</div>
+        <div class="ben-desc">Every application deserves a CV written for that specific role. Radar generates a professional, typeset-ready LaTeX document for each posting — tailored to the exact language and priorities of the job description.</div>
+        <div class="ben-outcome">Stand out in every pile</div>
+      </div>
+      <div class="ben-card">
+        <div class="ben-icon">
+          <svg viewBox="0 0 16 16"><path d="M8 14S2 10 2 6a6 6 0 0 1 12 0c0 4-6 8-6 8z"/><circle cx="8" cy="6" r="2"/></svg>
+        </div>
+        <div class="ben-title">See your search on a map</div>
+        <div class="ben-desc">Every application is geocoded and pinned to an interactive map. Understand the geography of your search — identify clusters of opportunity, plan commutes, and export data for deeper spatial analysis.</div>
+        <div class="ben-outcome">Full geographic picture</div>
+      </div>
+      <div class="ben-card">
+        <div class="ben-icon">
+          <svg viewBox="0 0 16 16"><path d="M2 12l4-4 3 3 5-7"/><circle cx="2" cy="12" r="1.2" fill="rgba(255,255,255,.5)" stroke="none"/><circle cx="6" cy="8" r="1.2" fill="rgba(255,255,255,.5)" stroke="none"/><circle cx="9" cy="11" r="1.2" fill="rgba(255,255,255,.5)" stroke="none"/><circle cx="14" cy="5" r="1.2" fill="rgba(255,255,255,.5)" stroke="none"/></svg>
+        </div>
+        <div class="ben-title">Never lose track of an opportunity</div>
+        <div class="ben-desc">A complete application history with statuses, notes, and timestamps. From the first draft to the signed contract — every conversation, every follow-up, every stage is logged and searchable.</div>
+        <div class="ben-outcome">Stay on top of everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-section">
+  <div class="wrap">
+    <div class="metrics-grid">
+      <div class="metric">
+        <span class="metric-num"><span>6</span>+</span>
+        <span class="metric-label">Job platforms integrated<br/>in one dashboard</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num"><span>60</span>s</span>
+        <span class="metric-label">From posting to full<br/>compatibility analysis</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num"><span>100</span>%</span>
+        <span class="metric-label">CVs tailored to<br/>the specific role</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num"><span>0</span></span>
+        <span class="metric-label">Applications lost<br/>or forgotten</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <svg class="cta-ring" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="350" cy="350" r="80" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".1"/>
+    <circle cx="350" cy="350" r="160" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".08"/>
+    <circle cx="350" cy="350" r="240" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".06"/>
+    <circle cx="350" cy="350" r="330" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".04"/>
+    <line x1="50" y1="350" x2="650" y2="350" stroke="#1b4ef3" stroke-width=".5" opacity=".05"/>
+    <line x1="350" y1="50" x2="350" y2="650" stroke="#1b4ef3" stroke-width=".5" opacity=".05"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-tag" style="justify-content:center">Get started</div>
+    <h2>Your next role is already out there.<br/>Find it with confidence.</h2>
+    <p>Stop sending the same CV and hoping for the best. Radar gives you the analysis, the tools, and the clarity to make every application count.</p>
+    <div class="cta-actions">
+      <a href="http://localhost:5173/" class="btn-primary">Open Radar  →</a>
+      <a href="#how" class="btn-outline">See how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Radar</div>
+  <div class="footer-copy">Built by Loice Graciane Pokam · Powered by Claude AI + Supabase</div>
+  <div class="footer-links">
+    <a href="#problem">Why Radar</a>
+    <a href="#how">How it works</a>
+    <a href="#benefits">Features</a>
+    <a href="#cta">Get started</a>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'),i*70);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
 </html>
