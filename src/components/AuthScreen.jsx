@@ -31,38 +31,38 @@ export default function AuthScreen() {
 
   const inputStyle = {
     width: '100%', padding: '11px 14px', borderRadius: 8,
-    border: '1px solid #1e293b', background: '#0a0f1a',
-    color: '#f1f5f9', fontSize: 13,
-    fontFamily: "'Space Mono', monospace",
+    border: '1px solid #e0e3ea', background: '#f0f2f7',
+    color: '#0d1117', fontSize: 13,
+    fontFamily: "'DM Mono', monospace",
     outline: 'none', boxSizing: 'border-box',
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#080c14', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Sora', sans-serif", padding: 20 }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');* { box-sizing: border-box; margin: 0; padding: 0; }`}</style>
+    <div style={{ minHeight: '100vh', background: '#f8f9fc', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Syne', sans-serif", padding: 20 }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap');* { box-sizing: border-box; margin: 0; padding: 0; }`}</style>
 
       <div style={{ width: '100%', maxWidth: 400 }}>
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{ width: 60, height: 60, borderRadius: 16, background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30, margin: '0 auto 14px' }}>🎯</div>
-          <h1 style={{ fontSize: 26, fontWeight: 800, color: '#f1f5f9', marginBottom: 6 }}>
+          <h1 style={{ fontSize: 26, fontWeight: 800, color: '#0d1117', marginBottom: 6 }}>
             Radar <span style={{ color: '#3b82f6' }}>AI</span>
           </h1>
-          <p style={{ color: '#475569', fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+          <p style={{ color: '#6b7280', fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
             AI-powered job monitoring & applications
           </p>
         </div>
 
         {/* Card */}
-        <div style={{ background: '#0d1117', border: '1px solid #1e293b', borderRadius: 16, padding: 28 }}>
+        <div style={{ background: '#ffffff', border: '1px solid #e0e3ea', borderRadius: 16, padding: 28 }}>
           {/* Mode toggle */}
-          <div style={{ display: 'flex', background: '#0a0f1a', borderRadius: 10, padding: 4, marginBottom: 24, gap: 4 }}>
+          <div style={{ display: 'flex', background: '#f0f2f7', borderRadius: 10, padding: 4, marginBottom: 24, gap: 4 }}>
             {[['signin', 'Sign in'], ['signup', 'Sign up']].map(([m, label]) => (
               <button key={m} onClick={() => { setMode(m); setError(null); setSuccess(null); }} style={{
                 flex: 1, padding: '8px', borderRadius: 8, border: 'none', cursor: 'pointer',
-                background: mode === m ? '#1e3a5f' : 'transparent',
-                color: mode === m ? '#93c5fd' : '#475569',
-                fontSize: 12, fontFamily: "'Space Mono', monospace",
+                background: mode === m ? 'rgba(27,78,243,.1)' : 'transparent',
+                color: mode === m ? '#1b4ef3' : '#6b7280',
+                fontSize: 12, fontFamily: "'DM Mono', monospace",
                 fontWeight: mode === m ? 700 : 400, transition: 'all 0.15s',
               }}>{label}</button>
             ))}
@@ -91,12 +91,12 @@ export default function AuthScreen() {
             </div>
 
             {error && (
-              <div style={{ background: '#1a0a0a', border: '1px solid #ef444444', borderRadius: 8, padding: '8px 12px', color: '#ef4444', fontSize: 11, fontFamily: "'Space Mono', monospace", marginBottom: 14 }}>
+              <div style={{ background: 'rgba(239,68,68,.06)', border: '1px solid #ef444444', borderRadius: 8, padding: '8px 12px', color: '#ef4444', fontSize: 11, fontFamily: "'DM Mono', monospace", marginBottom: 14 }}>
                 {error}
               </div>
             )}
             {success && (
-              <div style={{ background: '#0a1a14', border: '1px solid #10b98144', borderRadius: 8, padding: '8px 12px', color: '#6ee7b7', fontSize: 11, fontFamily: "'Space Mono', monospace", marginBottom: 14 }}>
+              <div style={{ background: 'rgba(16,185,129,.06)', border: '1px solid #10b98144', borderRadius: 8, padding: '8px 12px', color: '#0a8a5c', fontSize: 11, fontFamily: "'DM Mono', monospace", marginBottom: 14 }}>
                 {success}
               </div>
             )}
@@ -104,9 +104,9 @@ export default function AuthScreen() {
             <button type="submit" disabled={loading} style={{
               width: '100%', padding: '12px', borderRadius: 8, border: 'none',
               cursor: loading ? 'wait' : 'pointer',
-              background: loading ? '#1e293b' : 'linear-gradient(135deg, #1e3a5f, #2d1b69)',
-              color: loading ? '#475569' : '#93c5fd',
-              fontSize: 13, fontFamily: "'Space Mono', monospace",
+              background: loading ? '#e0e3ea' : 'linear-gradient(135deg, rgba(27,78,243,.1), rgba(124,58,237,.1))',
+              color: loading ? '#6b7280' : '#1b4ef3',
+              fontSize: 13, fontFamily: "'DM Mono', monospace",
               fontWeight: 700, marginBottom: 16,
             }}>
               {loading ? '⏳ Loading...' : mode === 'signin' ? '→ Sign in' : '→ Create account'}
@@ -115,16 +115,16 @@ export default function AuthScreen() {
 
           {/* Divider */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-            <div style={{ flex: 1, height: 1, background: '#1e293b' }} />
-            <span style={{ color: '#475569', fontSize: 11, fontFamily: "'Space Mono', monospace" }}>or</span>
-            <div style={{ flex: 1, height: 1, background: '#1e293b' }} />
+            <div style={{ flex: 1, height: 1, background: '#e0e3ea' }} />
+            <span style={{ color: '#6b7280', fontSize: 11, fontFamily: "'DM Mono', monospace" }}>or</span>
+            <div style={{ flex: 1, height: 1, background: '#e0e3ea' }} />
           </div>
 
           <button onClick={handleGoogle} style={{
             width: '100%', padding: '12px', borderRadius: 8,
-            border: '1px solid #1e293b', background: '#0a0f1a',
-            color: '#94a3b8', cursor: 'pointer',
-            fontSize: 13, fontFamily: "'Space Mono', monospace",
+            border: '1px solid #e0e3ea', background: '#f0f2f7',
+            color: '#4b5563', cursor: 'pointer',
+            fontSize: 13, fontFamily: "'DM Mono', monospace",
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
           }}>
             <svg width="16" height="16" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export default function AuthScreen() {
           </button>
         </div>
 
-        <p style={{ textAlign: 'center', color: '#334155', fontSize: 11, fontFamily: "'Space Mono', monospace", marginTop: 20 }}>
+        <p style={{ textAlign: 'center', color: '#9ca3af', fontSize: 11, fontFamily: "'DM Mono', monospace", marginTop: 20 }}>
           Your data is private and only visible to you.
         </p>
       </div>

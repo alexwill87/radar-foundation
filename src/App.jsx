@@ -50,13 +50,13 @@ L.Icon.Default.mergeOptions({
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 const STATUSES = ["to send", "sent", "response received", "interview", "rejected", "accepted"];
 const STATUS_COLORS = {
-  "to send": "#64748b", "sent": "#3b82f6", "response received": "#f59e0b",
+  "to send": "#6b7280", "sent": "#3b82f6", "response received": "#f59e0b",
   "interview": "#8b5cf6", "rejected": "#ef4444", "accepted": "#10b981",
 };
 const SOURCE_COLORS = {
   "APEC": "#0052cc", "LinkedIn": "#0077b5",
   "Welcome to the Jungle": "#3ddc97", "Indeed": "#003a9b",
-  "JobTeaser ENSG": "#e85d04", "JobTeaser IFP": "#7b2d8b", "Other": "#64748b",
+  "JobTeaser ENSG": "#e85d04", "JobTeaser IFP": "#7b2d8b", "Other": "#6b7280",
 };
 const CONTRACT_COLORS = {
   "CDI": "#10b981", "CDD": "#f59e0b", "CDD 18 mois": "#f59e0b",
@@ -363,22 +363,22 @@ function ScoreRing({ score, size = 56 }) {
   return (
     <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size} style={{ transform: "rotate(-90deg)" }}>
-        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="#1e293b" strokeWidth={6} />
+        <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="#e0e3ea" strokeWidth={6} />
         <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={color} strokeWidth={6}
           strokeDasharray={`${dash} ${circ}`} strokeLinecap="round"
           style={{ transition: "stroke-dasharray 1s ease" }} />
       </svg>
       <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 13, fontWeight: 700, color, fontFamily: "'Space Mono', monospace" }}>{score}</div>
+        fontSize: 13, fontWeight: 700, color, fontFamily: "'DM Mono', monospace" }}>{score}</div>
     </div>
   );
 }
 
-function Tag({ label, color = "#334155" }) {
+function Tag({ label, color = "#9ca3af" }) {
   return (
     <span style={{ background: color+"22", color, border: `1px solid ${color}44`,
       borderRadius: 4, padding: "2px 8px", fontSize: 11,
-      fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>{label}</span>
+      fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>{label}</span>
   );
 }
 
@@ -386,11 +386,11 @@ function Toast({ toast }) {
   if (!toast) return null;
   return (
     <div style={{ position: "fixed", top: 20, right: 20, zIndex: 2000,
-      background: toast.type === "error" ? "#1a0a0a" : "#0a1a14",
+      background: toast.type === "error" ? "rgba(239,68,68,.06)" : "rgba(16,185,129,.06)",
       border: `1px solid ${toast.type === "error" ? "#ef4444" : "#10b981"}`,
-      color: toast.type === "error" ? "#ef4444" : "#6ee7b7",
+      color: toast.type === "error" ? "#ef4444" : "#0a8a5c",
       padding: "10px 16px", borderRadius: 8,
-      fontFamily: "'Space Mono', monospace", fontSize: 12,
+      fontFamily: "'DM Mono', monospace", fontSize: 12,
       boxShadow: "0 4px 20px #0008" }}>{toast.msg}</div>
   );
 }
@@ -472,14 +472,14 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
         ].map(t => (
           <button key={t.id} onClick={() => setTab(t.id)} style={{
             padding: "8px 16px", borderRadius: 8, border: "none", cursor: "pointer",
-            background: tab === t.id ? "#1e3a5f" : "#0d1117",
-            color: tab === t.id ? "#93c5fd" : "#475569",
-            fontSize: 12, fontFamily: "'Space Mono', monospace",
-            border: `1px solid ${tab === t.id ? "#3b82f644" : "#1e293b"}`
+            background: tab === t.id ? "rgba(27,78,243,.1)" : "#ffffff",
+            color: tab === t.id ? "#1b4ef3" : "#6b7280",
+            fontSize: 12, fontFamily: "'DM Mono', monospace",
+            border: `1px solid ${tab === t.id ? "#3b82f644" : "#e0e3ea"}`
           }}>
             {t.label}
             {t.count > 0 && (
-              <span style={{ marginLeft: 6, background: "#1e293b", borderRadius: 10,
+              <span style={{ marginLeft: 6, background: "#e0e3ea", borderRadius: 10,
                 padding: "1px 6px", fontSize: 10 }}>{t.count}</span>
             )}
           </button>
@@ -490,24 +490,24 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
       {tab === "list" && (
         <div>
           {profilItems.length === 0 ? (
-            <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+            <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
               borderRadius: 12, padding: 40, textAlign: "center" }}>
               <div style={{ fontSize: 32, marginBottom: 12 }}>📭</div>
-              <div style={{ color: "#475569", fontSize: 13,
-                fontFamily: "'Space Mono', monospace", marginBottom: 16 }}>
+              <div style={{ color: "#6b7280", fontSize: 13,
+                fontFamily: "'DM Mono', monospace", marginBottom: 16 }}>
                 Your profile is empty — add your CV or work experience!
               </div>
               <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
                 <button onClick={() => setTab("upload")} style={{
                   padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: "#1e3a5f", color: "#93c5fd", cursor: "pointer",
-                  fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+                  background: "rgba(27,78,243,.1)", color: "#1b4ef3", cursor: "pointer",
+                  fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
                   Upload a CV
                 </button>
                 <button onClick={() => setTab("manual")} style={{
                   padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: "#1a3a2a", color: "#6ee7b7", cursor: "pointer",
-                  fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+                  background: "rgba(10,138,92,.08)", color: "#0a8a5c", cursor: "pointer",
+                  fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
                   Manual entry
                 </button>
               </div>
@@ -515,28 +515,28 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {profilItems.map(item => (
-                <div key={item.id} style={{ background: "#0d1117",
-                  border: "1px solid #1e293b", borderRadius: 12, padding: "14px 16px" }}>
+                <div key={item.id} style={{ background: "#ffffff",
+                  border: "1px solid #e0e3ea", borderRadius: 12, padding: "14px 16px" }}>
                   <div style={{ display: "flex", alignItems: "center",
                     justifyContent: "space-between", marginBottom: 6 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <span style={{
                         fontSize: 10,
                         color: item.type === "cv_upload" ? "#8b5cf6" : "#3b82f6",
-                        background: item.type === "cv_upload" ? "#2d1b6922" : "#1e3a5f22",
+                        background: item.type === "cv_upload" ? "rgba(124,58,237,.1)22" : "rgba(27,78,243,.1)22",
                         border: `1px solid ${item.type === "cv_upload" ? "#8b5cf644" : "#3b82f644"}`,
                         borderRadius: 4, padding: "2px 8px",
-                        fontFamily: "'Space Mono', monospace" }}>
+                        fontFamily: "'DM Mono', monospace" }}>
                         {item.type === "cv_upload" ? "File" : "Manual"}
                       </span>
-                      <span style={{ color: "#f1f5f9", fontSize: 13, fontWeight: 600,
-                        fontFamily: "'Sora', sans-serif" }}>{item.titre}</span>
+                      <span style={{ color: "#0d1117", fontSize: 13, fontWeight: 600,
+                        fontFamily: "'Syne', sans-serif" }}>{item.titre}</span>
                     </div>
                     <div style={{ display: "flex", gap: 6 }}>
                       <button onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                         style={{ padding: "3px 8px", borderRadius: 6,
-                          border: "1px solid #1e293b", background: "transparent",
-                          color: "#64748b", cursor: "pointer", fontSize: 11 }}>
+                          border: "1px solid #e0e3ea", background: "transparent",
+                          color: "#6b7280", cursor: "pointer", fontSize: 11 }}>
                         {expandedId === item.id ? "▲ Collapse" : "▼ View"}
                       </button>
                       <button onClick={() => handleDelete(item.id)}
@@ -549,15 +549,15 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
                   </div>
 
                   {expandedId === item.id ? (
-                    <pre style={{ color: "#94a3b8", fontSize: 11, lineHeight: 1.6,
-                      fontFamily: "'Space Mono', monospace", whiteSpace: "pre-wrap",
-                      background: "#0a0f1a", borderRadius: 8, padding: 12,
+                    <pre style={{ color: "#4b5563", fontSize: 11, lineHeight: 1.6,
+                      fontFamily: "'DM Mono', monospace", whiteSpace: "pre-wrap",
+                      background: "#f0f2f7", borderRadius: 8, padding: 12,
                       maxHeight: 300, overflow: "auto", margin: 0 }}>
                       {item.contenu}
                     </pre>
                   ) : (
-                    <div style={{ color: "#475569", fontSize: 11,
-                      fontFamily: "'Space Mono', monospace" }}>
+                    <div style={{ color: "#6b7280", fontSize: 11,
+                      fontFamily: "'DM Mono', monospace" }}>
                       {item.contenu.slice(0, 120)}...
                     </div>
                   )}
@@ -570,50 +570,50 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
 
       {/* UPLOAD TAB */}
       {tab === "upload" && (
-        <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+        <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
           borderRadius: 12, padding: 30 }}>
-          <h3 style={{ color: "#f1f5f9", fontSize: 14, fontWeight: 700,
-            fontFamily: "'Sora', sans-serif", marginBottom: 8 }}>
+          <h3 style={{ color: "#0d1117", fontSize: 14, fontWeight: 700,
+            fontFamily: "'Syne', sans-serif", marginBottom: 8 }}>
             Upload a CV file
           </h3>
-          <p style={{ color: "#64748b", fontSize: 12,
-            fontFamily: "'Space Mono', monospace", marginBottom: 20 }}>
-            Accepted formats: <strong style={{ color: "#93c5fd" }}>PDF, TXT, TEX, MD</strong>
+          <p style={{ color: "#6b7280", fontSize: 12,
+            fontFamily: "'DM Mono', monospace", marginBottom: 20 }}>
+            Accepted formats: <strong style={{ color: "#1b4ef3" }}>PDF, TXT, TEX, MD</strong>
           </p>
 
-          <label style={{ display: "block", border: "2px dashed #1e293b",
+          <label style={{ display: "block", border: "2px dashed #e0e3ea",
             borderRadius: 12, padding: 30, textAlign: "center", cursor: "pointer",
             transition: "border-color 0.2s" }}
             onMouseOver={e => e.currentTarget.style.borderColor = "#3b82f6"}
-            onMouseOut={e => e.currentTarget.style.borderColor = "#1e293b"}>
+            onMouseOut={e => e.currentTarget.style.borderColor = "#e0e3ea"}>
             <input type="file" accept=".pdf,.txt,.tex,.md"
               onChange={handleFileUpload} style={{ display: "none" }} />
             {loading ? (
               <div>
                 <div style={{ fontSize: 32, marginBottom: 8 }}>⏳</div>
                 <div style={{ color: "#f59e0b", fontSize: 13,
-                  fontFamily: "'Space Mono', monospace" }}>
+                  fontFamily: "'DM Mono', monospace" }}>
                   Reading file...
                 </div>
               </div>
             ) : (
               <div>
                 <div style={{ fontSize: 40, marginBottom: 10 }}>📂</div>
-                <div style={{ color: "#f1f5f9", fontSize: 13,
-                  fontFamily: "'Space Mono', monospace", marginBottom: 6 }}>
+                <div style={{ color: "#0d1117", fontSize: 13,
+                  fontFamily: "'DM Mono', monospace", marginBottom: 6 }}>
                   Click to choose a file
                 </div>
-                <div style={{ color: "#475569", fontSize: 11,
-                  fontFamily: "'Space Mono', monospace" }}>
+                <div style={{ color: "#6b7280", fontSize: 11,
+                  fontFamily: "'DM Mono', monospace" }}>
                   PDF · TXT · TEX · MD
                 </div>
               </div>
             )}
           </label>
 
-          <div style={{ marginTop: 16, background: "#0a0f1a", borderRadius: 8,
-            padding: "10px 14px", color: "#475569", fontSize: 11,
-            fontFamily: "'Space Mono', monospace" }}>
+          <div style={{ marginTop: 16, background: "#f0f2f7", borderRadius: 8,
+            padding: "10px 14px", color: "#6b7280", fontSize: 11,
+            fontFamily: "'DM Mono', monospace" }}>
             💡 <strong style={{ color: "#f59e0b" }}>Tip:</strong> The richer your profile,
             the more accurate and faithful the generated CVs will be. Add all your CVs!
           </div>
@@ -622,31 +622,31 @@ function ProfilePanel({ profilItems, userId, onRefresh, showToast }) {
 
       {/* MANUAL TAB */}
       {tab === "manual" && (
-        <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+        <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
           borderRadius: 12, padding: 24 }}>
-          <h3 style={{ color: "#f1f5f9", fontSize: 14, fontWeight: 700,
-            fontFamily: "'Sora', sans-serif", marginBottom: 16 }}>
+          <h3 style={{ color: "#0d1117", fontSize: 14, fontWeight: 700,
+            fontFamily: "'Syne', sans-serif", marginBottom: 16 }}>
             Manual experience entry
           </h3>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div>
-              <label style={{ color: "#64748b", fontSize: 11,
-                fontFamily: "'Space Mono', monospace", display: "block", marginBottom: 4 }}>
+              <label style={{ color: "#6b7280", fontSize: 11,
+                fontFamily: "'DM Mono', monospace", display: "block", marginBottom: 4 }}>
                 Title *
               </label>
               <input value={titre} onChange={e => setTitre(e.target.value)}
                 placeholder="E.g. TotalEnergies Internship 2025, Python Skills, ENSG Degree..."
                 style={{ width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid #1e293b", background: "#0a0f1a",
-                  color: "#f1f5f9", fontSize: 12,
-                  fontFamily: "'Space Mono', monospace", outline: "none",
+                  border: "1px solid #e0e3ea", background: "#f0f2f7",
+                  color: "#0d1117", fontSize: 12,
+                  fontFamily: "'DM Mono', monospace", outline: "none",
                   boxSizing: "border-box" }} />
             </div>
 
             <div>
-              <label style={{ color: "#64748b", fontSize: 11,
-                fontFamily: "'Space Mono', monospace", display: "block", marginBottom: 4 }}>
+              <label style={{ color: "#6b7280", fontSize: 11,
+                fontFamily: "'DM Mono', monospace", display: "block", marginBottom: 4 }}>
                 Content *
               </label>
               <textarea value={contenu} onChange={e => setContenu(e.target.value)}
@@ -663,26 +663,26 @@ Data Scientist Intern - Institut Curie (2024-2025)
 • Geocoding and spatial analysis with GeoPandas`}
                 rows={12}
                 style={{ width: "100%", padding: "10px 14px", borderRadius: 8,
-                  border: "1px solid #1e293b", background: "#0a0f1a",
-                  color: "#f1f5f9", fontSize: 12, lineHeight: 1.6,
-                  fontFamily: "'Space Mono', monospace", outline: "none",
+                  border: "1px solid #e0e3ea", background: "#f0f2f7",
+                  color: "#0d1117", fontSize: 12, lineHeight: 1.6,
+                  fontFamily: "'DM Mono', monospace", outline: "none",
                   resize: "vertical", boxSizing: "border-box" }} />
             </div>
 
             <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
               <button onClick={() => { setTitre(""); setContenu(""); }}
                 style={{ padding: "9px 18px", borderRadius: 8,
-                  border: "1px solid #1e293b", background: "transparent",
-                  color: "#64748b", cursor: "pointer",
-                  fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+                  border: "1px solid #e0e3ea", background: "transparent",
+                  color: "#6b7280", cursor: "pointer",
+                  fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
                 Clear
               </button>
               <button onClick={handleSaveManual} disabled={saving}
                 style={{ padding: "9px 24px", borderRadius: 8, border: "none",
                   cursor: saving ? "wait" : "pointer",
-                  background: saving ? "#1e293b" : "#1a3a2a",
-                  color: saving ? "#475569" : "#6ee7b7",
-                  fontSize: 12, fontFamily: "'Space Mono', monospace",
+                  background: saving ? "#e0e3ea" : "rgba(10,138,92,.08)",
+                  color: saving ? "#6b7280" : "#0a8a5c",
+                  fontSize: 12, fontFamily: "'DM Mono', monospace",
                   fontWeight: 700 }}>
                 {saving ? "⏳ Saving..." : "Save"}
               </button>
@@ -713,9 +713,9 @@ function ApplicationsTracker({ candidatures, onRefresh, showToast }) {
 
   if (candidatures.length === 0) {
     return (
-      <div style={{ background: "#0d1117", border: "1px solid #1e293b", borderRadius: 12, padding: 40, textAlign: "center" }}>
+      <div style={{ background: "#ffffff", border: "1px solid #e0e3ea", borderRadius: 12, padding: 40, textAlign: "center" }}>
         <div style={{ fontSize: 32, marginBottom: 12 }}>📭</div>
-        <div style={{ color: "#475569", fontSize: 13, fontFamily: "'Space Mono', monospace" }}>
+        <div style={{ color: "#6b7280", fontSize: 13, fontFamily: "'DM Mono', monospace" }}>
           No applications yet. Analyse a job, generate a CV, and save your first application!
         </div>
       </div>
@@ -735,19 +735,19 @@ function ApplicationsTracker({ candidatures, onRefresh, showToast }) {
       {/* Stats bar */}
       <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
         {Object.entries(statsByStatus).filter(([,v]) => v > 0).map(([statut, count]) => (
-          <div key={statut} style={{ background: (STATUS_COLORS[statut]||"#64748b")+"22",
-            border: `1px solid ${(STATUS_COLORS[statut]||"#64748b")}44`,
+          <div key={statut} style={{ background: (STATUS_COLORS[statut]||"#6b7280")+"22",
+            border: `1px solid ${(STATUS_COLORS[statut]||"#6b7280")}44`,
             borderRadius: 8, padding: "6px 12px", display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ color: STATUS_COLORS[statut]||"#64748b", fontSize: 18, fontWeight: 800,
-              fontFamily: "'Space Mono', monospace" }}>{count}</span>
-            <span style={{ color: "#64748b", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{statut}</span>
+            <span style={{ color: STATUS_COLORS[statut]||"#6b7280", fontSize: 18, fontWeight: 800,
+              fontFamily: "'DM Mono', monospace" }}>{count}</span>
+            <span style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>{statut}</span>
           </div>
         ))}
         {avgScore && (
           <div style={{ background: "#10b98122", border: "1px solid #10b98144",
             borderRadius: 8, padding: "6px 12px", display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ color: "#10b981", fontSize: 18, fontWeight: 800, fontFamily: "'Space Mono', monospace" }}>{avgScore}%</span>
-            <span style={{ color: "#64748b", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>avg score</span>
+            <span style={{ color: "#10b981", fontSize: 18, fontWeight: 800, fontFamily: "'DM Mono', monospace" }}>{avgScore}%</span>
+            <span style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>avg score</span>
           </div>
         )}
       </div>
@@ -755,18 +755,18 @@ function ApplicationsTracker({ candidatures, onRefresh, showToast }) {
       {/* List */}
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {candidatures.map(c => (
-          <div key={c.id} style={{ background: "#0d1117", border: "1px solid #1e293b",
+          <div key={c.id} style={{ background: "#ffffff", border: "1px solid #e0e3ea",
             borderRadius: 12, padding: "14px 16px" }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
-                  <Tag label={c.source} color={SOURCE_COLORS[c.source]||"#64748b"} />
-                  <Tag label={c.contrat} color={CONTRACT_COLORS[c.contrat]||"#64748b"} />
+                  <Tag label={c.source} color={SOURCE_COLORS[c.source]||"#6b7280"} />
+                  <Tag label={c.contrat} color={CONTRACT_COLORS[c.contrat]||"#6b7280"} />
                   <Tag label={c.secteur} color="#8b5cf6" />
                 </div>
-                <div style={{ color: "#f1f5f9", fontWeight: 700, fontSize: 13, marginBottom: 2,
-                  fontFamily: "'Sora', sans-serif" }}>{c.titre_poste}</div>
-                <div style={{ color: "#64748b", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+                <div style={{ color: "#0d1117", fontWeight: 700, fontSize: 13, marginBottom: 2,
+                  fontFamily: "'Syne', sans-serif" }}>{c.titre_poste}</div>
+                <div style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
                   {c.entreprise} · {c.localisation} · {c.date_candidature}
                   {c.latitude && <span style={{ color: "#3b82f6" }}> 📍 {c.latitude?.toFixed(2)}, {c.longitude?.toFixed(2)}</span>}
                 </div>
@@ -774,36 +774,36 @@ function ApplicationsTracker({ candidatures, onRefresh, showToast }) {
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 {c.score_compatibilite && <ScoreRing score={c.score_compatibilite} size={44} />}
                 <select value={c.statut} onChange={e => handleStatus(c.id, e.target.value)}
-                  style={{ padding: "4px 8px", borderRadius: 6, border: `1px solid ${(STATUS_COLORS[c.statut]||"#64748b")}44`,
-                    background: (STATUS_COLORS[c.statut]||"#64748b")+"22",
-                    color: STATUS_COLORS[c.statut]||"#64748b",
-                    fontSize: 11, fontFamily: "'Space Mono', monospace", cursor: "pointer" }}>
+                  style={{ padding: "4px 8px", borderRadius: 6, border: `1px solid ${(STATUS_COLORS[c.statut]||"#6b7280")}44`,
+                    background: (STATUS_COLORS[c.statut]||"#6b7280")+"22",
+                    color: STATUS_COLORS[c.statut]||"#6b7280",
+                    fontSize: 11, fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
                   {STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <button onClick={() => setExpandedId(expandedId === c.id ? null : c.id)}
-                  style={{ padding: "4px 8px", borderRadius: 6, border: "1px solid #1e293b",
-                    background: "transparent", color: "#64748b", cursor: "pointer", fontSize: 12 }}>
+                  style={{ padding: "4px 8px", borderRadius: 6, border: "1px solid #e0e3ea",
+                    background: "transparent", color: "#6b7280", cursor: "pointer", fontSize: 12 }}>
                   {expandedId === c.id ? "▲" : "▼"}
                 </button>
               </div>
             </div>
 
             {expandedId === c.id && (
-              <div style={{ marginTop: 12, borderTop: "1px solid #1e293b", paddingTop: 12 }}>
+              <div style={{ marginTop: 12, borderTop: "1px solid #e0e3ea", paddingTop: 12 }}>
                 {c.lacunes?.length > 0 && (
                   <div style={{ marginBottom: 10 }}>
-                    <div style={{ color: "#f59e0b", fontSize: 11, fontFamily: "'Space Mono', monospace",
+                    <div style={{ color: "#f59e0b", fontSize: 11, fontFamily: "'DM Mono', monospace",
                       marginBottom: 4, fontWeight: 700 }}>⚠️ Identified gaps:</div>
                     {c.lacunes.map((l, i) => (
-                      <div key={i} style={{ color: "#94a3b8", fontSize: 11,
-                        fontFamily: "'Space Mono', monospace" }}>• {l}</div>
+                      <div key={i} style={{ color: "#4b5563", fontSize: 11,
+                        fontFamily: "'DM Mono', monospace" }}>• {l}</div>
                     ))}
                   </div>
                 )}
                 {c.conseil && (
-                  <div style={{ background: "#1e293b", borderRadius: 6, padding: "6px 10px",
+                  <div style={{ background: "#e0e3ea", borderRadius: 6, padding: "6px 10px",
                     color: "#cbd5e1", fontSize: 11, fontStyle: "italic",
-                    fontFamily: "'Space Mono', monospace", marginBottom: 10 }}>
+                    fontFamily: "'DM Mono', monospace", marginBottom: 10 }}>
                     💡 {c.conseil}
                   </div>
                 )}
@@ -813,13 +813,13 @@ function ApplicationsTracker({ candidatures, onRefresh, showToast }) {
                     onChange={e => setEditNotes(p => ({ ...p, [c.id]: e.target.value }))}
                     placeholder="Personal notes..."
                     rows={2}
-                    style={{ flex: 1, padding: "6px 10px", borderRadius: 6, border: "1px solid #1e293b",
-                      background: "#0a0f1a", color: "#94a3b8", fontSize: 11,
-                      fontFamily: "'Space Mono', monospace", resize: "none", outline: "none" }} />
+                    style={{ flex: 1, padding: "6px 10px", borderRadius: 6, border: "1px solid #e0e3ea",
+                      background: "#f0f2f7", color: "#4b5563", fontSize: 11,
+                      fontFamily: "'DM Mono', monospace", resize: "none", outline: "none" }} />
                   <button onClick={() => handleNotes(c.id)}
                     style={{ padding: "6px 12px", borderRadius: 6, border: "none", cursor: "pointer",
-                      background: "#1a3a2a", color: "#6ee7b7", fontSize: 11,
-                      fontFamily: "'Space Mono', monospace", alignSelf: "flex-end" }}>
+                      background: "rgba(10,138,92,.08)", color: "#0a8a5c", fontSize: 11,
+                      fontFamily: "'DM Mono', monospace", alignSelf: "flex-end" }}>
                     💾
                   </button>
                 </div>
@@ -878,58 +878,58 @@ function LatexModal({ latex, job, user, onClose, onSave, saving }) {
     <div style={{ position: "fixed", inset: 0, background: "#00000099",
       display: "flex", alignItems: "center", justifyContent: "center",
       zIndex: 1000, backdropFilter: "blur(4px)", padding: 20 }}>
-      <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+      <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
         borderRadius: 16, width: "100%", maxWidth: 820,
         maxHeight: "90vh", display: "flex", flexDirection: "column",
         boxShadow: "0 25px 60px #000a" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "16px 20px", borderBottom: "1px solid #1e293b" }}>
+          padding: "16px 20px", borderBottom: "1px solid #e0e3ea" }}>
           <div>
-            <div style={{ color: "#f1f5f9", fontWeight: 700, fontSize: 15,
-              fontFamily: "'Sora', sans-serif" }}>CV LaTeX — {job.company}</div>
-            <div style={{ color: "#64748b", fontSize: 12,
-              fontFamily: "'Space Mono', monospace" }}>{job.title}</div>
+            <div style={{ color: "#0d1117", fontWeight: 700, fontSize: 15,
+              fontFamily: "'Syne', sans-serif" }}>CV LaTeX — {job.company}</div>
+            <div style={{ color: "#6b7280", fontSize: 12,
+              fontFamily: "'DM Mono', monospace" }}>{job.title}</div>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={copy} style={{ padding: "7px 14px", borderRadius: 8,
-              border: "1px solid #1e293b", background: copied ? "#1a3a2a" : "#1e293b",
-              color: copied ? "#6ee7b7" : "#94a3b8", cursor: "pointer",
-              fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+              border: "1px solid #e0e3ea", background: copied ? "rgba(10,138,92,.08)" : "#e0e3ea",
+              color: copied ? "#0a8a5c" : "#4b5563", cursor: "pointer",
+              fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
               {copied ? "✓ Copied!" : "Copy"}
             </button>
             <button onClick={download} style={{ padding: "7px 14px", borderRadius: 8,
-              border: "none", background: "#1e3a5f", color: "#93c5fd",
-              cursor: "pointer", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+              border: "none", background: "rgba(27,78,243,.1)", color: "#1b4ef3",
+              cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
               ⬇ .tex
             </button>
             <button onClick={downloadPdf} disabled={compilingPdf} style={{
               padding: "7px 14px", borderRadius: 8, border: "none",
-              background: compilingPdf ? "#1e293b" : "#1a0a2a",
-              color: compilingPdf ? "#475569" : "#c084fc",
+              background: compilingPdf ? "#e0e3ea" : "#1a0a2a",
+              color: compilingPdf ? "#6b7280" : "#c084fc",
               cursor: compilingPdf ? "wait" : "pointer",
-              fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+              fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
               {compilingPdf ? "⏳ Compiling..." : "PDF"}
             </button>
             <button onClick={onSave} disabled={saving} style={{ padding: "7px 14px", borderRadius: 8,
-              border: "none", background: saving ? "#1e293b" : "#1a3a2a",
-              color: saving ? "#475569" : "#6ee7b7",
+              border: "none", background: saving ? "#e0e3ea" : "rgba(10,138,92,.08)",
+              color: saving ? "#6b7280" : "#0a8a5c",
               cursor: saving ? "wait" : "pointer",
-              fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+              fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
               {saving ? "⏳..." : "💾 Save application"}
             </button>
             <button onClick={onClose} style={{ padding: "7px 12px", borderRadius: 8,
-              border: "1px solid #1e293b", background: "transparent",
+              border: "1px solid #e0e3ea", background: "transparent",
               color: "#ef4444", cursor: "pointer", fontSize: 14 }}>✕</button>
           </div>
         </div>
-        <div style={{ padding: "8px 20px", background: "#1a3a2a44",
-          borderBottom: "1px solid #1e293b", color: "#6ee7b7",
-          fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+        <div style={{ padding: "8px 20px", background: "rgba(10,138,92,.08)44",
+          borderBottom: "1px solid #e0e3ea", color: "#0a8a5c",
+          fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
           💡 Compile on overleaf.com (free) · Upload the .tex file
         </div>
         <pre style={{ flex: 1, overflow: "auto", margin: 0, padding: "16px 20px",
-          color: "#94a3b8", fontSize: 11, lineHeight: 1.6,
-          fontFamily: "'Space Mono', monospace", background: "transparent" }}>
+          color: "#4b5563", fontSize: 11, lineHeight: 1.6,
+          fontFamily: "'DM Mono', monospace", background: "transparent" }}>
           {fullLatex}
         </pre>
       </div>
@@ -946,28 +946,28 @@ function JobCard({ job, analysis, onAnalyze, onGenerate, onApply, candidatures, 
   );
 
   return (
-    <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+    <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
       borderRadius: 12, padding: "16px 18px" }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 4 }}>
-            <Tag label={job.source} color={SOURCE_COLORS[job.source]||"#64748b"} />
-            <Tag label={job.contract} color={CONTRACT_COLORS[job.contract]||"#64748b"} />
+            <Tag label={job.source} color={SOURCE_COLORS[job.source]||"#6b7280"} />
+            <Tag label={job.contract} color={CONTRACT_COLORS[job.contract]||"#6b7280"} />
             <Tag label={job.secteur} color="#8b5cf6" />
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <h3 style={{ color: "#f1f5f9", fontSize: 13, fontWeight: 700, margin: 0,
-              fontFamily: "'Sora', sans-serif" }}>{job.title}</h3>
+            <h3 style={{ color: "#0d1117", fontSize: 13, fontWeight: 700, margin: 0,
+              fontFamily: "'Syne', sans-serif" }}>{job.title}</h3>
             {alreadyApplied && (
               <span style={{ background: "#ef444422", color: "#ef4444",
                 border: "1px solid #ef444444", borderRadius: 4,
                 padding: "2px 8px", fontSize: 10,
-                fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                 ✓ Applied
               </span>
             )}
           </div>
-          <div style={{ color: "#64748b", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+          <div style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
             {job.company} · {job.location} · {job.date ? new Date(job.date).toLocaleDateString('en-GB') : ""}
           </div>
         </div>
@@ -979,25 +979,25 @@ function JobCard({ job, analysis, onAnalyze, onGenerate, onApply, candidatures, 
       </div>
 
       {analysis && (
-        <div style={{ borderTop: "1px solid #1e293b", paddingTop: 8, marginBottom: 10 }}>
+        <div style={{ borderTop: "1px solid #e0e3ea", paddingTop: 8, marginBottom: 10 }}>
           {analysis.points_forts?.slice(0,2).map(p => (
             <div key={p} style={{ display: "flex", gap: 6, marginBottom: 2 }}>
               <span style={{ color: "#10b981", fontSize: 10 }}>✓</span>
-              <span style={{ color: "#94a3b8", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{p}</span>
+              <span style={{ color: "#4b5563", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>{p}</span>
             </div>
           ))}
           {analysis.lacunes?.length > 0 && (
             <div style={{ display: "flex", gap: 6, marginBottom: 4 }}>
               <span style={{ color: "#f59e0b", fontSize: 10 }}>⚠</span>
-              <span style={{ color: "#94a3b8", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+              <span style={{ color: "#4b5563", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
                 {analysis.lacunes[0]}
               </span>
             </div>
           )}
           {analysis.conseil && (
-            <div style={{ background: "#1e293b", borderRadius: 6, padding: "5px 8px",
+            <div style={{ background: "#e0e3ea", borderRadius: 6, padding: "5px 8px",
               color: "#cbd5e1", fontSize: 10, fontStyle: "italic",
-              fontFamily: "'Space Mono', monospace" }}>💡 {analysis.conseil}</div>
+              fontFamily: "'DM Mono', monospace" }}>💡 {analysis.conseil}</div>
           )}
         </div>
       )}
@@ -1006,27 +1006,27 @@ function JobCard({ job, analysis, onAnalyze, onGenerate, onApply, candidatures, 
         <button onClick={() => onAnalyze(job)} disabled={isAnalyzing} style={{
           flex: 1, padding: "7px 0", borderRadius: 6, border: "none",
           cursor: isAnalyzing ? "wait" : "pointer",
-          background: isAnalyzing ? "#1e293b" : "#1e3a5f",
-          color: isAnalyzing ? "#475569" : "#93c5fd",
-          fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+          background: isAnalyzing ? "#e0e3ea" : "rgba(27,78,243,.1)",
+          color: isAnalyzing ? "#6b7280" : "#1b4ef3",
+          fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
           {isAnalyzing ? "⏳ Analysing..." : analysis ? "Re-analyse" : "Analyse"}
         </button>
 
         <button onClick={() => onGenerate(job, analysis)} disabled={isGenerating || !analysis} style={{
           flex: 1, padding: "7px 0", borderRadius: 6, border: "none",
           cursor: (isGenerating || !analysis) ? "not-allowed" : "pointer",
-          background: (isGenerating || !analysis) ? "#1e293b" : "#1a3a2a",
-          color: (isGenerating || !analysis) ? "#475569" : "#6ee7b7",
-          fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+          background: (isGenerating || !analysis) ? "#e0e3ea" : "rgba(10,138,92,.08)",
+          color: (isGenerating || !analysis) ? "#6b7280" : "#0a8a5c",
+          fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
           {isGenerating ? "⏳ Generating..." : "CV LaTeX"}
         </button>
 
         <button onClick={() => onApply(job)} disabled={!job.url} style={{
           flex: 1, padding: "7px 0", borderRadius: 6, border: "none",
           cursor: !job.url ? "not-allowed" : "pointer",
-          background: !job.url ? "#1e293b" : "#1a2a1a",
-          color: !job.url ? "#475569" : "#34d399",
-          fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+          background: !job.url ? "#e0e3ea" : "#1a2a1a",
+          color: !job.url ? "#6b7280" : "#0a8a5c",
+          fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
           Apply →
         </button>
       </div>
@@ -1076,7 +1076,7 @@ function MapView({ jobs, candidatures, analyses, onApply }) {
   }, [jobs, candidatures]);
 
   const getColor = (score) => {
-    if (!score) return "#64748b";
+    if (!score) return "#6b7280";
     if (score >= 80) return "#10b981";
     if (score >= 60) return "#f59e0b";
     return "#ef4444";
@@ -1102,27 +1102,27 @@ function MapView({ jobs, candidatures, analyses, onApply }) {
   });
 
   return (
-    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #1e293b" }}>
-      <div style={{ background: "#0d1117", padding: "10px 16px",
+    <div style={{ borderRadius: 12, overflow: "hidden", border: "1px solid #e0e3ea" }}>
+      <div style={{ background: "#ffffff", padding: "10px 16px",
         display: "flex", gap: 16, alignItems: "center",
-        borderBottom: "1px solid #1e293b" }}>
-        <span style={{ color: "#64748b", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+        borderBottom: "1px solid #e0e3ea" }}>
+        <span style={{ color: "#6b7280", fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
           📍 {geoJobs.length} geolocated out of {jobs.length + (candidatures?.length || 0)}
         </span>
         <div style={{ display: "flex", gap: 10 }}>
-          {[["#10b981", "Score ≥ 80"], ["#f59e0b", "Score 60-79"], ["#ef4444", "Score < 60"], ["#64748b", "Not analysed"]].map(([color, label]) => (
+          {[["#10b981", "Score ≥ 80"], ["#f59e0b", "Score 60-79"], ["#ef4444", "Score < 60"], ["#6b7280", "Not analysed"]].map(([color, label]) => (
             <div key={label} style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: color }} />
-              <span style={{ color: "#64748b", fontSize: 10, fontFamily: "'Space Mono', monospace" }}>{label}</span>
+              <span style={{ color: "#6b7280", fontSize: 10, fontFamily: "'DM Mono', monospace" }}>{label}</span>
             </div>
           ))}
         </div>
       </div>
 
       {geoJobs.length === 0 ? (
-        <div style={{ background: "#0d1117", padding: 40, textAlign: "center" }}>
+        <div style={{ background: "#ffffff", padding: 40, textAlign: "center" }}>
           <div style={{ fontSize: 32, marginBottom: 12 }}>🗺️</div>
-          <div style={{ color: "#475569", fontSize: 13, fontFamily: "'Space Mono', monospace" }}>
+          <div style={{ color: "#6b7280", fontSize: 13, fontFamily: "'DM Mono', monospace" }}>
             Load some jobs then click "Analyse all" to geolocate them!
           </div>
         </div>
@@ -1227,8 +1227,8 @@ export default function App() {
   // Show auth screen while loading or if not logged in
   if (authLoading) {
     return (
-      <div style={{ minHeight: "100vh", background: "#080c14", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ color: "#475569", fontFamily: "'Space Mono', monospace", fontSize: 13 }}>Loading...</div>
+      <div style={{ minHeight: "100vh", background: "#f8f9fc", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ color: "#6b7280", fontFamily: "'DM Mono', monospace", fontSize: 13 }}>Loading...</div>
       </div>
     );
   }
@@ -1485,14 +1485,16 @@ export default function App() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #080c14; }
+        body { background: #f8f9fc; color: #0d1117; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0d1117; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: #f0f2f7; }
+        ::-webkit-scrollbar-thumb { background: #c4c9d4; border-radius: 3px; }
         button:hover:not(:disabled) { opacity: 0.85; }
-        select option { background: #0d1117; }
+        button { transition: all 0.15s ease; }
+        select option { background: #ffffff; }
+        input::placeholder { color: #9ca3af; }
       `}</style>
 
       {/* Data loader — runs after render when user is known */}
@@ -1516,21 +1518,21 @@ export default function App() {
         <div style={{ position: "fixed", inset: 0, background: "#00000099",
           display: "flex", alignItems: "center", justifyContent: "center",
           zIndex: 1000, backdropFilter: "blur(4px)", padding: 20 }}>
-          <div style={{ background: "#0d1117", border: "1px solid #1e293b",
+          <div style={{ background: "#ffffff", border: "1px solid #e0e3ea",
             borderRadius: 16, padding: 24, width: "100%", maxWidth: 400 }}>
-            <h3 style={{ color: "#f1f5f9", fontSize: 15, fontFamily: "'Sora', sans-serif",
+            <h3 style={{ color: "#0d1117", fontSize: 15, fontFamily: "'Syne', sans-serif",
               marginBottom: 4 }}>JobTeaser Login</h3>
-            <p style={{ color: "#475569", fontSize: 11, fontFamily: "'Space Mono', monospace",
+            <p style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace",
               marginBottom: 16 }}>Enter your school's JobTeaser credentials</p>
 
             <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
               {["ensg", "ifp"].map(s => (
                 <button key={s} onClick={() => setJtSchool(s)} style={{
                   padding: "6px 14px", borderRadius: 8, cursor: "pointer", fontSize: 11,
-                  fontFamily: "'Space Mono', monospace",
-                  background: jtSchool === s ? "#e85d0422" : "#1e293b",
-                  color: jtSchool === s ? "#e85d04" : "#64748b",
-                  border: `1px solid ${jtSchool === s ? "#e85d0444" : "#1e293b"}`
+                  fontFamily: "'DM Mono', monospace",
+                  background: jtSchool === s ? "#e85d0422" : "#e0e3ea",
+                  color: jtSchool === s ? "#e85d04" : "#6b7280",
+                  border: `1px solid ${jtSchool === s ? "#e85d0444" : "#e0e3ea"}`
                 }}>
                   {s.toUpperCase()}
                 </button>
@@ -1540,35 +1542,35 @@ export default function App() {
             <input value={jtSchool} onChange={e => setJtSchool(e.target.value)}
               placeholder="School name (e.g. ensg, ifp, mines-paris...)"
               style={{ width: "100%", padding: "10px 14px", borderRadius: 8,
-                border: "1px solid #1e293b", background: "#0a0f1a",
-                color: "#f1f5f9", fontSize: 12, fontFamily: "'Space Mono', monospace",
+                border: "1px solid #e0e3ea", background: "#f0f2f7",
+                color: "#0d1117", fontSize: 12, fontFamily: "'DM Mono', monospace",
                 outline: "none", boxSizing: "border-box", marginBottom: 10 }} />
             <input value={jtEmail} onChange={e => setJtEmail(e.target.value)}
               placeholder="JobTeaser email"
               type="email"
               style={{ width: "100%", padding: "10px 14px", borderRadius: 8,
-                border: "1px solid #1e293b", background: "#0a0f1a",
-                color: "#f1f5f9", fontSize: 12, fontFamily: "'Space Mono', monospace",
+                border: "1px solid #e0e3ea", background: "#f0f2f7",
+                color: "#0d1117", fontSize: 12, fontFamily: "'DM Mono', monospace",
                 outline: "none", boxSizing: "border-box", marginBottom: 10 }} />
             <input value={jtPassword} onChange={e => setJtPassword(e.target.value)}
               placeholder="Password"
               type="password"
               style={{ width: "100%", padding: "10px 14px", borderRadius: 8,
-                border: "1px solid #1e293b", background: "#0a0f1a",
-                color: "#f1f5f9", fontSize: 12, fontFamily: "'Space Mono', monospace",
+                border: "1px solid #e0e3ea", background: "#f0f2f7",
+                color: "#0d1117", fontSize: 12, fontFamily: "'DM Mono', monospace",
                 outline: "none", boxSizing: "border-box", marginBottom: 16 }} />
             <div style={{ display: "flex", gap: 8 }}>
               <button onClick={() => setShowJTModal(false)} style={{
                 flex: 1, padding: "10px", borderRadius: 8,
-                border: "1px solid #1e293b", background: "transparent",
-                color: "#64748b", cursor: "pointer",
-                fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+                border: "1px solid #e0e3ea", background: "transparent",
+                color: "#6b7280", cursor: "pointer",
+                fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
                 Cancel
               </button>
               <button onClick={handleFetchJT} style={{
                 flex: 1, padding: "10px", borderRadius: 8, border: "none",
-                background: "#1a0a00", color: "#e85d04", cursor: "pointer",
-                fontSize: 12, fontFamily: "'Space Mono', monospace",
+                background: "rgba(232,93,4,.06)", color: "#e85d04", cursor: "pointer",
+                fontSize: 12, fontFamily: "'DM Mono', monospace",
                 border: "1px solid #e85d0444" }}>
                 Fetch jobs
               </button>
@@ -1577,21 +1579,21 @@ export default function App() {
         </div>
       )}
 
-      <div style={{ minHeight: "100vh", background: "#080c14", fontFamily: "'Sora', sans-serif", color: "#f1f5f9" }}>
+      <div style={{ minHeight: "100vh", background: "#f8f9fc", fontFamily: "'Syne', sans-serif", color: "#0d1117" }}>
         {/* Demo banner */}
         {DEMO_MODE && (
           <div style={{ background: "linear-gradient(90deg, #1b4ef3, #7c3aed)", padding: "8px 20px", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-            <span style={{ fontSize: 12, fontFamily: "'Space Mono', monospace", color: "#fff" }}>
+            <span style={{ fontSize: 12, fontFamily: "'DM Mono', monospace", color: "#fff" }}>
               Live Demo &mdash; Pre-loaded with sample data to showcase Radar's features
             </span>
-            <a href="/landing.html" style={{ fontSize: 11, fontFamily: "'Space Mono', monospace", color: "#c4b5fd", textDecoration: "underline" }}>
+            <a href="/landing.html" style={{ fontSize: 11, fontFamily: "'DM Mono', monospace", color: "#7c3aed", textDecoration: "underline" }}>
               &larr; Back to landing page
             </a>
           </div>
         )}
 
         {/* Header */}
-        <div style={{ borderBottom: "1px solid #1e293b", background: "#0d1117", padding: "0 32px" }}>
+        <div style={{ borderBottom: "1px solid #e0e3ea", background: "#ffffff", padding: "0 32px" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "16px 0",
             display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -1602,7 +1604,7 @@ export default function App() {
                 <h1 style={{ fontSize: 18, fontWeight: 800 }}>
                   Radar <span style={{ color: "#3b82f6" }}>AI</span>
                 </h1>
-                <p style={{ color: "#475569", fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+                <p style={{ color: "#6b7280", fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
                   {displayName}
                 </p>
               </div>
@@ -1616,17 +1618,17 @@ export default function App() {
               ].map(s => (
                 <div key={s.label} style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 20, fontWeight: 800, color: s.color,
-                    fontFamily: "'Space Mono', monospace" }}>{s.value}</div>
-                  <div style={{ fontSize: 10, color: "#475569",
-                    fontFamily: "'Space Mono', monospace" }}>{s.label}</div>
+                    fontFamily: "'DM Mono', monospace" }}>{s.value}</div>
+                  <div style={{ fontSize: 10, color: "#6b7280",
+                    fontFamily: "'DM Mono', monospace" }}>{s.label}</div>
                 </div>
               ))}
               <button
                 onClick={() => { if (!DEMO_MODE) supabase.auth.signOut(); }}
                 style={{ padding: "6px 14px", borderRadius: 8,
-                  border: "1px solid #1e293b", background: "transparent",
-                  color: "#64748b", cursor: "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace" }}>
+                  border: "1px solid #e0e3ea", background: "transparent",
+                  color: "#6b7280", cursor: "pointer",
+                  fontSize: 11, fontFamily: "'DM Mono', monospace" }}>
                 Sign out
               </button>
             </div>
@@ -1637,14 +1639,14 @@ export default function App() {
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{
                 padding: "10px 20px", border: "none", cursor: "pointer",
-                background: "transparent", fontFamily: "'Space Mono', monospace",
+                background: "transparent", fontFamily: "'DM Mono', monospace",
                 fontSize: 12, fontWeight: activeTab === tab.id ? 700 : 400,
-                color: activeTab === tab.id ? "#f1f5f9" : "#475569",
+                color: activeTab === tab.id ? "#0d1117" : "#6b7280",
                 borderBottom: activeTab === tab.id ? "2px solid #3b82f6" : "2px solid transparent",
                 transition: "all 0.2s"
               }}>
                 {tab.label} {tab.count > 0 && (
-                  <span style={{ background: "#1e293b", borderRadius: 10, padding: "1px 6px",
+                  <span style={{ background: "#e0e3ea", borderRadius: 10, padding: "1px 6px",
                     fontSize: 10, marginLeft: 4 }}>{tab.count}</span>
                 )}
               </button>
@@ -1661,13 +1663,13 @@ export default function App() {
                 <input value={searchText} onChange={e => setSearchText(e.target.value)}
                   placeholder="Search job title, company, skill, sector..."
                   style={{ flex: 1, minWidth: 200, padding: "8px 14px", borderRadius: 8,
-                    border: "1px solid #1e293b", background: "#0d1117",
-                    color: "#f1f5f9", fontSize: 12, fontFamily: "'Space Mono', monospace", outline: "none" }} />
+                    border: "1px solid #e0e3ea", background: "#ffffff",
+                    color: "#0d1117", fontSize: 12, fontFamily: "'DM Mono', monospace", outline: "none" }} />
 
                 <select value={filter} onChange={e => setFilter(e.target.value)}
-                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #1e293b",
-                    background: "#0d1117", color: "#94a3b8", fontSize: 11,
-                    fontFamily: "'Space Mono', monospace", cursor: "pointer" }}>
+                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #e0e3ea",
+                    background: "#ffffff", color: "#4b5563", fontSize: 11,
+                    fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
                   <option value="all">All contracts</option>
                   <option value="stage">Internship</option>
                   <option value="cdi">CDI</option>
@@ -1677,9 +1679,9 @@ export default function App() {
                 </select>
 
                 <select value={filterSource} onChange={e => setFilterSource(e.target.value)}
-                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #1e293b",
-                    background: "#0d1117", color: "#94a3b8", fontSize: 11,
-                    fontFamily: "'Space Mono', monospace", cursor: "pointer" }}>
+                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #e0e3ea",
+                    background: "#ffffff", color: "#4b5563", fontSize: 11,
+                    fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
                   <option value="all">All sources</option>
                   <option value="France Travail">France Travail</option>
                   <option value="Welcome to the Jungle">WTTJ</option>
@@ -1690,9 +1692,9 @@ export default function App() {
                 </select>
 
                 <select value={filterDate} onChange={e => setFilterDate(e.target.value)}
-                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #1e293b",
-                    background: "#0d1117", color: "#94a3b8", fontSize: 11,
-                    fontFamily: "'Space Mono', monospace", cursor: "pointer" }}>
+                  style={{ padding: "8px 12px", borderRadius: 8, border: "1px solid #e0e3ea",
+                    background: "#ffffff", color: "#4b5563", fontSize: 11,
+                    fontFamily: "'DM Mono', monospace", cursor: "pointer" }}>
                   <option value="all">All dates</option>
                   <option value="today">Today</option>
                   <option value="week">This week</option>
@@ -1701,10 +1703,10 @@ export default function App() {
 
                 <button onClick={handleAnalyzeAll} disabled={analyzeAll} style={{
                   padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: analyzeAll ? "#1e293b" : "#2d1b69",
-                  color: analyzeAll ? "#475569" : "#a78bfa",
+                  background: analyzeAll ? "#e0e3ea" : "rgba(124,58,237,.1)",
+                  color: analyzeAll ? "#6b7280" : "#7c3aed",
                   cursor: analyzeAll ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {analyzeAll ? "⏳ Analysing..." : "⚡ Analyse all"}
                 </button>
 
@@ -1712,9 +1714,9 @@ export default function App() {
                   <button onClick={() => setStopAnalysis(true)} style={{
                     padding: "8px 16px", borderRadius: 8,
                     border: "1px solid #ef444444",
-                    background: "#1a0000", color: "#ef4444",
+                    background: "rgba(239,68,68,.06)", color: "#ef4444",
                     cursor: "pointer", fontSize: 11,
-                    fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap"
+                    fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap"
                   }}>
                     ⏹ Stop
                   </button>
@@ -1722,54 +1724,54 @@ export default function App() {
 
                 <button onClick={handleFetchFT} disabled={fetchingFT} style={{
                   padding: "8px 16px", borderRadius: 8,
-                  border: "1px solid #34d39944",
-                  background: "#0a2a1a", color: "#34d399",
+                  border: "1px solid #0a8a5c44",
+                  background: "rgba(10,138,92,.06)", color: "#0a8a5c",
                   cursor: fetchingFT ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {fetchingFT ? "⏳ Loading..." : "France Travail"}
                 </button>
 
                 <button onClick={handleFetchWTTJ} disabled={fetchingWTTJ} style={{
                   padding: "8px 16px", borderRadius: 8,
                   border: "1px solid #3ddc9744",
-                  background: "#0a2a1a", color: "#3ddc97",
+                  background: "rgba(10,138,92,.06)", color: "#3ddc97",
                   cursor: fetchingWTTJ ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {fetchingWTTJ ? "⏳ Loading..." : "WTTJ"}
                 </button>
 
                 <button onClick={() => setShowJTModal(true)} disabled={fetchingJT} style={{
                   padding: "8px 16px", borderRadius: 8,
                   border: "1px solid #e85d0444",
-                  background: "#1a0a00", color: "#e85d04",
+                  background: "rgba(232,93,4,.06)", color: "#e85d04",
                   cursor: fetchingJT ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {fetchingJT ? "⏳ Connecting..." : "JobTeaser"}
                 </button>
 
                 <button onClick={handleFetchIndeed} disabled={fetchingIndeed} style={{
                   padding: "8px 16px", borderRadius: 8,
                   border: "1px solid #00339944",
-                  background: "#001a33", color: "#4d94ff",
+                  background: "rgba(27,78,243,.06)", color: "#1b4ef3",
                   cursor: fetchingIndeed ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {fetchingIndeed ? "⏳ Loading..." : "Indeed"}
                 </button>
 
                 <button onClick={handleFetchApec} disabled={fetchingApec} style={{
                   padding: "8px 16px", borderRadius: 8,
                   border: "1px solid #0052cc44",
-                  background: "#001433", color: "#4d94ff",
+                  background: "rgba(27,78,243,.06)", color: "#1b4ef3",
                   cursor: fetchingApec ? "wait" : "pointer",
-                  fontSize: 11, fontFamily: "'Space Mono', monospace", whiteSpace: "nowrap" }}>
+                  fontSize: 11, fontFamily: "'DM Mono', monospace", whiteSpace: "nowrap" }}>
                   {fetchingApec ? "⏳ Loading..." : "APEC"}
                 </button>
               </div>
 
               {profilItems.length === 0 && (
-                <div style={{ background: "#1a1a0a", border: "1px solid #f59e0b44",
+                <div style={{ background: "rgba(245,158,11,.06)", border: "1px solid #f59e0b44",
                   borderRadius: 10, padding: "10px 16px", marginBottom: 16,
-                  color: "#f59e0b", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>
+                  color: "#f59e0b", fontSize: 12, fontFamily: "'DM Mono', monospace" }}>
                   ⚠️ Profile empty — generated CVs will have no content. Go to "Profile" to add your CV!
                 </div>
               )}
@@ -1785,8 +1787,8 @@ export default function App() {
               </div>
 
               {filteredJobs.length === 0 && (
-                <div style={{ textAlign: "center", padding: "60px 0", color: "#334155",
-                  fontFamily: "'Space Mono', monospace", fontSize: 13 }}>
+                <div style={{ textAlign: "center", padding: "60px 0", color: "#9ca3af",
+                  fontFamily: "'DM Mono', monospace", fontSize: 13 }}>
                   No jobs loaded. Use the buttons above to fetch from job boards.
                 </div>
               )}
