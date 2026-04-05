@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Radar — Ta recherche d'emploi, simplifiée</title>
+<title>Radar — Your unfair advantage in job hunting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -41,22 +41,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;display:flex;ali
 /* HERO */
 .hero{padding:130px 2.5rem 80px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
 .hero-dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,#d0d5e0 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 70% 80% at 50% 40%,black,transparent);opacity:.55}
-.hero-inner{max-width:900px;margin:0 auto;width:100%;text-align:center;position:relative;z-index:2}
+.hero-inner{max-width:1140px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:2}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid var(--blue-b);background:var(--blue-bg);padding:.3rem 1rem;border-radius:100px;margin-bottom:2rem}
 .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-h1{font-family:var(--serif);font-weight:800;font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.06;letter-spacing:-.04em;color:var(--ink);margin-bottom:1.5rem}
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(2.4rem,4.5vw,3.9rem);line-height:1.06;letter-spacing:-.04em;color:var(--ink);margin-bottom:1.3rem}
 h1 .accent{color:var(--blue)}
-.hero-empathy{font-size:1.15rem;color:var(--ink2);line-height:1.8;max-width:640px;margin:0 auto 1rem;font-weight:300}
-.hero-empathy strong{font-weight:500;color:var(--ink)}
-.hero-promise{font-size:1.05rem;color:var(--blue);font-weight:500;margin-bottom:2.5rem;font-family:var(--serif)}
-.hero-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.hero-sub{font-size:1.08rem;color:var(--ink2);line-height:1.8;max-width:480px;margin-bottom:2.5rem;font-weight:300}
+.hero-sub strong{font-weight:500;color:var(--ink)}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;font-weight:500;letter-spacing:-.01em;background:var(--ink);color:#fff;padding:.85rem 2rem;border-radius:8px;text-decoration:none;transition:background .2s,transform .15s}
 .btn-primary:hover{background:var(--blue);transform:translateY(-1px)}
 .btn-primary.big{font-size:1.05rem;padding:1rem 2.5rem;border-radius:10px}
 .btn-outline{display:inline-flex;align-items:center;font-size:.9rem;font-weight:400;color:var(--ink2);padding:.85rem 1.5rem;border-radius:8px;text-decoration:none;border:1px solid var(--rule);transition:border-color .2s,color .2s}
 .btn-outline:hover{border-color:var(--ink3);color:var(--ink)}
-.hero-proof{display:flex;align-items:center;gap:1.5rem;justify-content:center;font-size:.82rem;color:var(--ink3)}
+.hero-proof{display:flex;align-items:center;gap:1.5rem;font-size:.82rem;color:var(--ink3)}
 .hero-proof-item{display:flex;align-items:center;gap:6px}
 .hero-proof-item::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green)}
 
@@ -67,81 +66,18 @@ section{padding:6rem 0}
 .section-tag::after{content:'';height:1px;width:36px;background:var(--blue-b)}
 h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,3vw,2.65rem);letter-spacing:-.035em;line-height:1.1;color:var(--ink);margin-bottom:.9rem}
 .section-lead{font-size:.97rem;color:var(--ink2);max-width:540px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.text-center{text-align:center}
+.text-center .section-lead{margin-left:auto;margin-right:auto}
+.text-center h2{max-width:600px;margin-left:auto;margin-right:auto}
 
-/* EMPATHY SECTION */
-.empathy-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5rem 0}
-.empathy-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.empathy-quote{font-family:var(--serif);font-size:1.6rem;font-weight:600;line-height:1.4;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.5rem}
-.empathy-quote .highlight{color:var(--blue);font-style:italic}
-.empathy-text{font-size:.95rem;color:var(--ink2);line-height:1.8;margin-bottom:1.5rem}
-.empathy-cards{display:flex;flex-direction:column;gap:.8rem}
-.empathy-card{display:flex;gap:1rem;align-items:flex-start;background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:1.2rem 1.4rem;transition:border-color .2s}
-.empathy-card:hover{border-color:var(--blue-b)}
-.empathy-card-emoji{font-size:1.5rem;flex-shrink:0}
-.empathy-card-title{font-family:var(--serif);font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.2rem}
-.empathy-card-desc{font-size:.82rem;color:var(--ink3);line-height:1.6}
-
-/* PERSONAS */
-.personas-section{padding:5rem 0}
-.personas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.persona-card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;padding:2rem 1.8rem;transition:transform .2s,box-shadow .2s}
-.persona-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2)}
-.persona-avatar{width:56px;height:56px;border-radius:50%;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
-.persona-avatar.a{background:var(--blue-bg);border:1.5px solid var(--blue-b)}
-.persona-avatar.b{background:var(--green-bg);border:1.5px solid rgba(10,138,92,.2)}
-.persona-avatar.c{background:var(--purple-bg);border:1.5px solid rgba(124,58,237,.2)}
-.persona-name{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:.2rem}
-.persona-role{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;margin-bottom:.8rem}
-.persona-pain{font-size:.85rem;color:var(--ink2);line-height:1.65;font-style:italic;margin-bottom:1rem;padding-left:.8rem;border-left:2px solid var(--rule)}
-.persona-win{font-size:.82rem;color:var(--green);font-weight:500;display:flex;align-items:center;gap:6px}
-.persona-win::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green-bg);border:1.5px solid var(--green)}
-
-/* QUICK WINS / ONBOARDING */
-.wins-section{background:var(--ink);color:#fff;padding:5.5rem 0}
-.wins-section h2{color:#fff}
-.wins-section .section-tag{color:rgba(255,255,255,.45)}
-.wins-section .section-tag::after{background:rgba(255,255,255,.15)}
-.wins-section .section-lead{color:rgba(255,255,255,.5)}
-.wins-header{text-align:center;margin-bottom:3.5rem}
-.wins-header h2{max-width:600px;margin:0 auto .9rem}
-.wins-header .section-lead{margin:0 auto 0}
-.wins-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.wins-timeline::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1.5px;background:rgba(255,255,255,.1)}
-.win-step{text-align:center;padding:0 1.2rem;position:relative}
-.win-num{width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-size:1.5rem;position:relative;z-index:2}
-.win-num.active{border-color:var(--blue);background:rgba(27,78,243,.15)}
-.win-time{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem}
-.win-title{font-family:var(--serif);font-weight:600;font-size:1rem;color:#fff;margin-bottom:.5rem;letter-spacing:-.01em}
-.win-desc{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.65}
-.win-badge{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px}
-.win-badge.free{background:rgba(10,138,92,.15);color:#34d399;border:1px solid rgba(10,138,92,.3)}
-.win-badge.pro{background:rgba(27,78,243,.15);color:#93bbfd;border:1px solid rgba(27,78,243,.3)}
-
-/* HOW IT WORKS */
-.hiw-section{padding:6rem 0}
-.hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem}
-.hiw-card{background:var(--bg2);border:1px solid var(--rule);border-radius:16px;padding:2rem 1.8rem;position:relative;overflow:hidden}
-.hiw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--green));opacity:0;transition:opacity .3s}
-.hiw-card:hover::before{opacity:1}
-.hiw-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--ink3);margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-.hiw-num::after{content:'';height:1px;flex:1;background:var(--rule)}
-.hiw-icon{font-size:1.8rem;margin-bottom:1rem}
-.hiw-title{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:.5rem}
-.hiw-desc{font-size:.84rem;color:var(--ink2);line-height:1.7}
-
-/* DEMO CARD */
-.demo-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5rem 0}
-.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.demo-text h2{margin-bottom:1rem}
-.demo-text p{font-size:.95rem;color:var(--ink2);line-height:1.8;margin-bottom:2rem}
-.demo-features{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
-.demo-feat{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:var(--ink)}
-.demo-feat-check{width:22px;height:22px;border-radius:50%;background:var(--green-bg);border:1px solid rgba(10,138,92,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green);font-size:.7rem}
+/* UI CARD (hero) */
+.hero-visual{position:relative}
 .ui-card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;padding:1.4rem;box-shadow:var(--shadow2)}
 .ui-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.3rem}
 .ui-card-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
 .badge{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;padding:.18rem .6rem;border-radius:100px;display:inline-flex;align-items:center;gap:5px}
 .badge.green{background:var(--green-bg);color:var(--green);border:1px solid rgba(10,138,92,.2)}
+.badge.blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-b)}
 .badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
 .score-row{display:flex;align-items:center;gap:1.3rem;margin-bottom:1.3rem}
 .score-ring-wrap{flex-shrink:0}
@@ -168,9 +104,116 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,3vw,2.65rem);
 .chip.g{background:var(--green-bg);color:var(--green);border:1px solid rgba(10,138,92,.18)}
 .chip.a{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(201,107,0,.18)}
 .chip.r{background:var(--red-bg);color:var(--red);border:1px solid rgba(201,42,42,.18)}
+.float-card{position:absolute;bottom:-28px;left:-36px;background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:.9rem 1.1rem;box-shadow:var(--shadow2);display:flex;align-items:center;gap:.9rem;min-width:200px}
+.float-card-icon{width:36px;height:36px;border-radius:8px;background:var(--green-bg);border:1px solid rgba(10,138,92,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.float-card-icon svg{width:15px;height:15px}
+.float-card-title{font-family:var(--serif);font-weight:600;font-size:.8rem;color:var(--ink);margin-bottom:.1rem}
+.float-card-sub{font-family:var(--mono);font-size:.59rem;color:var(--ink3);letter-spacing:.04em}
+
+/* ONBOARDING / QUICK WINS */
+.wins-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:5.5rem 0}
+.wins-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.win-card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;padding:1.8rem 1.5rem;text-align:center;transition:transform .2s,box-shadow .2s;position:relative}
+.win-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2)}
+.win-card.featured{border-color:var(--blue-b);background:linear-gradient(180deg,var(--blue-bg) 0%,var(--bg) 100%)}
+.win-icon{font-size:2rem;margin-bottom:1rem}
+.win-time{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+.win-title{font-family:var(--serif);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em}
+.win-desc{font-size:.83rem;color:var(--ink2);line-height:1.65}
+.win-badge{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px}
+.win-badge.free{background:var(--green-bg);color:var(--green);border:1px solid rgba(10,138,92,.2)}
+.win-badge.pro{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-b)}
+.win-arrow{position:absolute;right:-20px;top:50%;transform:translateY(-50%);color:var(--rule);font-size:1.2rem;font-weight:700}
+
+/* FEATURES */
+.features-section{padding:6rem 0}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feat-card{background:var(--bg);border:1px solid var(--rule);border-radius:14px;padding:1.8rem 1.5rem;transition:border-color .2s}
+.feat-card:hover{border-color:var(--blue-b)}
+.feat-icon{font-size:1.6rem;margin-bottom:.9rem}
+.feat-title{font-family:var(--serif);font-weight:600;font-size:.95rem;color:var(--ink);margin-bottom:.4rem;letter-spacing:-.01em}
+.feat-desc{font-size:.82rem;color:var(--ink2);line-height:1.65}
+.feat-tag{display:inline-block;margin-top:.7rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .55rem;border-radius:100px;background:var(--bg2);color:var(--ink3);border:1px solid var(--rule)}
+
+/* PLATFORMS */
+.platforms-section{background:var(--ink);color:#fff;padding:5rem 0;text-align:center}
+.platforms-section h2{color:#fff}
+.platforms-section .section-tag{color:rgba(255,255,255,.45)}
+.platforms-section .section-tag::after{background:rgba(255,255,255,.15)}
+.platforms-section .section-lead{color:rgba(255,255,255,.45);margin-left:auto;margin-right:auto}
+.plat-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-bottom:2rem}
+.plat-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;padding:.45rem 1rem;border-radius:100px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);transition:border-color .2s}
+.plat-pill:hover{border-color:rgba(255,255,255,.3)}
+.plat-pill .dot{width:6px;height:6px;border-radius:50%}
+.plat-pill .dot.live{background:#34d399;box-shadow:0 0 6px rgba(52,211,153,.5)}
+.plat-pill .dot.soon{background:#f59e0b}
+.plat-sub{font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:rgba(255,255,255,.3)}
+
+/* PIPELINE */
+.pipeline-section{padding:6rem 0}
+.pipeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+.pipeline-steps{display:flex;flex-direction:column;gap:0}
+.pipe-step{display:flex;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid var(--rule);position:relative}
+.pipe-step:last-child{border-bottom:none}
+.pipe-num{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;color:var(--ink3);flex-shrink:0;background:var(--bg)}
+.pipe-step.active .pipe-num{background:var(--blue);border-color:var(--blue);color:#fff}
+.pipe-label{font-family:var(--serif);font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:.2rem}
+.pipe-desc{font-size:.82rem;color:var(--ink2);line-height:1.6}
+.pipe-time{font-family:var(--mono);font-size:.58rem;color:var(--green);letter-spacing:.04em;margin-top:.3rem}
+
+/* pipeline mockup */
+.pipeline-wrap{border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow2);background:var(--bg)}
+.pipeline-header{padding:1rem 1.4rem;border-bottom:1px solid var(--rule);background:var(--bg2);display:flex;align-items:center;justify-content:space-between}
+.pipeline-h-title{font-family:var(--serif);font-weight:600;font-size:.88rem;color:var(--ink)}
+.pipeline-h-count{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--ink3)}
+.pipeline-row{padding:.9rem 1.4rem;border-bottom:1px solid var(--rule2);display:flex;align-items:center;gap:.9rem;transition:background .15s;cursor:default}
+.pipeline-row:hover{background:var(--bg2)}
+.pipeline-row:last-child{border-bottom:none}
+.p-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.p-info{flex:1;min-width:0}
+.p-title{font-size:.83rem;font-weight:500;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-co{font-size:.73rem;color:var(--ink3)}
+.p-score{font-family:var(--mono);font-size:.7rem;min-width:32px;text-align:right}
+.p-status{font-family:var(--mono);font-size:.61rem;letter-spacing:.04em;padding:.17rem .6rem;border-radius:100px;white-space:nowrap;min-width:78px;text-align:center}
+.ps-new{background:rgba(27,78,243,.07);color:var(--blue)}
+.ps-sent{background:rgba(10,138,92,.07);color:var(--green)}
+.ps-interview{background:rgba(201,107,0,.07);color:var(--amber)}
+.ps-offer{background:rgba(10,138,92,.12);color:var(--green);font-weight:500}
+
+/* PRICING */
+.pricing-section{background:var(--bg2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:6rem 0}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:780px;margin:0 auto}
+.price-card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;padding:2.2rem 2rem;position:relative}
+.price-card.featured{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue),var(--shadow2)}
+.price-popular{position:absolute;top:-12px;right:20px;font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .8rem;border-radius:100px;background:var(--blue);color:#fff}
+.price-name{font-family:var(--serif);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:.3rem}
+.price-amount{font-family:var(--serif);font-weight:800;font-size:2.4rem;color:var(--ink);letter-spacing:-.04em;margin-bottom:.2rem}
+.price-amount span{font-size:.9rem;font-weight:400;color:var(--ink3)}
+.price-desc{font-size:.84rem;color:var(--ink3);margin-bottom:1.5rem;line-height:1.6}
+.price-features{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.8rem}
+.price-feat{display:flex;align-items:center;gap:.6rem;font-size:.84rem;color:var(--ink2)}
+.price-feat .check{color:var(--green);font-weight:700;flex-shrink:0}
+.price-feat .cross{color:var(--ink3);flex-shrink:0}
+.price-btn{display:block;text-align:center;font-size:.9rem;font-weight:500;padding:.75rem;border-radius:8px;text-decoration:none;transition:all .2s}
+.price-btn.primary{background:var(--ink);color:#fff}
+.price-btn.primary:hover{background:var(--blue)}
+.price-btn.secondary{background:var(--bg2);color:var(--ink);border:1px solid var(--rule)}
+.price-btn.secondary:hover{border-color:var(--ink3)}
+
+/* PERSONAS */
+.personas-section{padding:5.5rem 0}
+.personas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.persona-card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;padding:1.8rem 1.5rem;transition:transform .2s,box-shadow .2s}
+.persona-card:hover{transform:translateY(-3px);box-shadow:var(--shadow2)}
+.persona-emoji{font-size:2rem;margin-bottom:1rem}
+.persona-name{font-family:var(--serif);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:.2rem}
+.persona-role{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;margin-bottom:.8rem}
+.persona-quote{font-size:.85rem;color:var(--ink2);line-height:1.65;font-style:italic;margin-bottom:.8rem;padding-left:.8rem;border-left:2px solid var(--rule)}
+.persona-win{font-size:.82rem;color:var(--green);font-weight:500;display:flex;align-items:center;gap:6px}
+.persona-win::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green-bg);border:1.5px solid var(--green)}
 
 /* METRICS */
-.metrics-section{background:var(--bg);border-bottom:1px solid var(--rule)}
+.metrics-section{border-bottom:1px solid var(--rule)}
 .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .metric{padding:2.5rem 2rem;text-align:center;border-right:1px solid var(--rule)}
 .metric:last-child{border-right:none}
@@ -178,14 +221,8 @@ h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,3vw,2.65rem);
 .metric-num span{color:var(--blue)}
 .metric-label{font-size:.83rem;color:var(--ink3);font-weight:300;line-height:1.5}
 
-/* MENTOR */
-.mentor-section{padding:5rem 0;text-align:center}
-.mentor-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink3);margin-bottom:1.5rem;padding:.4rem 1rem;background:var(--bg2);border:1px solid var(--rule);border-radius:100px}
-.mentor-text{font-size:1rem;color:var(--ink2);line-height:1.8;max-width:600px;margin:0 auto}
-.mentor-text strong{color:var(--ink);font-weight:500}
-
 /* CTA */
-.cta-section{padding:7rem 0;text-align:center;position:relative;overflow:hidden;background:var(--bg2);border-top:1px solid var(--rule)}
+.cta-section{padding:7rem 0;text-align:center;position:relative;overflow:hidden}
 .cta-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:700px;pointer-events:none}
 .cta-section h2{font-size:clamp(2rem,4vw,3.2rem);max-width:650px;margin:0 auto .9rem;position:relative;z-index:1}
 .cta-section p{color:var(--ink2);max-width:480px;margin:0 auto 2.5rem;font-size:1rem;position:relative;z-index:1;line-height:1.8}
@@ -211,17 +248,21 @@ footer{background:var(--bg);border-top:1px solid var(--rule);padding:1.8rem 2.5r
 @media(max-width:980px){
   nav{padding:0 1.5rem}.nav-center{display:none}
   .hero{padding:100px 1.5rem 60px}
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .float-card{display:none}
   .wrap{padding:0 1.5rem}
   section{padding:4rem 0}
-  .empathy-grid,.demo-grid{grid-template-columns:1fr;gap:2.5rem}
-  .personas-grid,.hiw-grid{grid-template-columns:1fr;gap:1rem}
-  .wins-timeline{grid-template-columns:repeat(2,1fr);gap:2rem}
-  .wins-timeline::before{display:none}
+  .wins-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .win-arrow{display:none}
+  .feat-grid{grid-template-columns:1fr;gap:1rem}
+  .pipeline-grid{grid-template-columns:1fr;gap:2.5rem}
+  .pricing-grid{grid-template-columns:1fr}
+  .personas-grid{grid-template-columns:1fr;gap:1rem}
+  .plat-grid{gap:.5rem}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
   .metric:nth-child(2){border-right:none}
   .metric:nth-child(3){border-right:1px solid var(--rule)}
   .metric:nth-child(3),.metric:nth-child(4){border-top:1px solid var(--rule)}
-  .cta-section{padding:5rem 0}
   footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}
 }
 </style>
@@ -235,280 +276,423 @@ footer{background:var(--bg);border-top:1px solid var(--rule);padding:1.8rem 2.5r
     Radar
   </a>
   <div class="nav-center">
-    <a href="#empathy">Pourquoi Radar</a>
-    <a href="#wins">Comment ca marche</a>
-    <a href="#demo">La promesse</a>
-    <a href="#personas">Pour qui</a>
+    <a href="#features">Features</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
   </div>
-  <a href="#cta" class="nav-cta">Commencer gratuitement</a>
+  <a href="#cta" class="nav-cta">Start free</a>
 </nav>
 
+<!-- ============================================================ -->
 <!-- HERO -->
+<!-- ============================================================ -->
 <div class="hero">
   <div class="hero-dot-grid"></div>
   <div class="hero-inner">
-    <div class="hero-tag"><div class="hero-tag-dot"></div>Hackathon Le Wagon 2026</div>
-    <h1>Chercher un job,<br/>ca ne devrait pas <span class="accent">faire mal.</span></h1>
-    <p class="hero-empathy">
-      Tu envoies des CV dans le vide. Tu te sens nul. Tu perds du temps.<br/>
-      <strong>On a construit Radar pour que ca s'arrete.</strong>
-    </p>
-    <p class="hero-promise">3 conversations avec l'IA. 1 profil complet. Tes premieres victoires en 10 minutes.</p>
-    <div class="hero-actions">
-      <a href="#cta" class="btn-primary big">Commencer maintenant &rarr;</a>
-      <a href="#wins" class="btn-outline">Voir les victoires rapides</a>
+    <div class="hero-left">
+      <div class="hero-tag"><div class="hero-tag-dot"></div>AI-powered job search</div>
+      <h1>Your unfair<br/>advantage in<br/><span class="accent">job hunting.</span></h1>
+      <p class="hero-sub">
+        Radar scans 9 platforms, scores every job against your profile, writes a tailored CV in 30 seconds, and tracks every application. <strong>You just hit send.</strong>
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary big">Start free &rarr;</a>
+        <a href="#how" class="btn-outline">See how it works</a>
+      </div>
+      <div class="hero-proof">
+        <div class="hero-proof-item">Free tier available</div>
+        <div class="hero-proof-item">No credit card</div>
+        <div class="hero-proof-item">First CV in 5 min</div>
+      </div>
     </div>
-    <div class="hero-proof">
-      <div class="hero-proof-item">100% gratuit pour commencer</div>
-      <div class="hero-proof-item">Pas de compte requis</div>
-      <div class="hero-proof-item">Resultats en 10 min</div>
+
+    <div class="hero-visual">
+      <div class="ui-card reveal">
+        <div class="ui-card-top">
+          <div class="ui-card-label">Compatibility analysis</div>
+          <div class="badge green"><div class="badge-dot"></div>Strong match</div>
+        </div>
+        <div class="score-row">
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 88 88" width="88" height="88">
+              <circle cx="44" cy="44" r="36" fill="none" stroke="#f0f2f7" stroke-width="6"/>
+              <circle cx="44" cy="44" r="36" fill="none" stroke="#1b4ef3" stroke-width="6" stroke-dasharray="226" stroke-dashoffset="43" stroke-linecap="round" transform="rotate(-90 44 44)" style="animation:ringIn 1.3s ease both"/>
+              <style>@keyframes ringIn{from{stroke-dashoffset:226}to{stroke-dashoffset:43}}</style>
+              <text x="44" y="40" text-anchor="middle" font-family="Syne" font-weight="800" font-size="20" fill="#0d1117">81</text>
+              <text x="44" y="53" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#8b91a0" letter-spacing="1">/100</text>
+            </svg>
+          </div>
+          <div class="score-details">
+            <div class="score-position">Data Engineer</div>
+            <div class="score-company">TotalEnergies &middot; Paris, France</div>
+            <div class="skill-bars">
+              <div class="skill-row"><div class="skill-name">Skills</div><div class="skill-track"><div class="skill-fill b" style="width:88%"></div></div><div class="skill-pct">88%</div></div>
+              <div class="skill-row"><div class="skill-name">Experience</div><div class="skill-track"><div class="skill-fill g" style="width:76%"></div></div><div class="skill-pct">76%</div></div>
+              <div class="skill-row"><div class="skill-name">Sector fit</div><div class="skill-track"><div class="skill-fill a" style="width:92%"></div></div><div class="skill-pct">92%</div></div>
+              <div class="skill-row"><div class="skill-name">Education</div><div class="skill-track"><div class="skill-fill b2" style="width:80%"></div></div><div class="skill-pct">80%</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight">
+          <div class="insight-label">AI recommendation</div>
+          <div class="insight-text">"Lead with your PostGIS experience and spatial analysis work &mdash; directly aligned with the role's core requirements."</div>
+        </div>
+        <div class="chip-row">
+          <span class="chip g">PostGIS &mdash; strong</span>
+          <span class="chip g">Python &mdash; strong</span>
+          <span class="chip a">R &mdash; partial</span>
+          <span class="chip r">Spark &mdash; gap</span>
+        </div>
+      </div>
+
+      <div class="float-card reveal reveal-delay-2">
+        <div class="float-card-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="#0a8a5c" stroke-width="1.5" stroke-linecap="round"><path d="M2 8.5l4 4 8-9"/></svg>
+        </div>
+        <div>
+          <div class="float-card-title">ATS score: 54 &rarr; 89</div>
+          <div class="float-card-sub">+35 pts &middot; CV optimized</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- EMPATHY SECTION -->
-<div class="empathy-section" id="empathy">
+<!-- ============================================================ -->
+<!-- QUICK WINS ONBOARDING -->
+<!-- ============================================================ -->
+<div class="wins-section" id="onboarding">
   <div class="wrap">
-    <div class="empathy-grid">
-      <div>
-        <div class="section-tag">On te comprend</div>
-        <div class="empathy-quote">
-          "J'ai envoye <span class="highlight">47 candidatures</span> le mois dernier.<br/>
-          J'ai eu <span class="highlight">2 reponses</span>."
-        </div>
-        <p class="empathy-text">
-          La recherche d'emploi, c'est epuisant. Tu doutes de toi. Tu te demandes si ton CV est nul. Tu passes des heures sur des sites sans savoir si tu perds ton temps.
-        </p>
-        <p class="empathy-text">
-          <strong>Radar ne juge pas. Radar t'aide.</strong> En quelques minutes, tu as une image claire de qui tu es professionnellement, et les outils pour le montrer.
-        </p>
-      </div>
-      <div class="empathy-cards reveal">
-        <div class="empathy-card">
-          <div class="empathy-card-emoji">&#128553;</div>
-          <div>
-            <div class="empathy-card-title">"Je sais pas comment me vendre"</div>
-            <div class="empathy-card-desc">Radar analyse ton parcours et trouve les mots que les recruteurs veulent entendre. Tu valides, tu envoies.</div>
-          </div>
-        </div>
-        <div class="empathy-card">
-          <div class="empathy-card-emoji">&#9200;</div>
-          <div>
-            <div class="empathy-card-title">"Je veux pas perdre 2h par candidature"</div>
-            <div class="empathy-card-desc">Un CV personnalise par offre, genere en 30 secondes. Tu passes ton temps a chercher, pas a reformater.</div>
-          </div>
-        </div>
-        <div class="empathy-card">
-          <div class="empathy-card-emoji">&#128566;</div>
-          <div>
-            <div class="empathy-card-title">"J'ai peur d'etre pas assez qualifie"</div>
-            <div class="empathy-card-desc">Radar te donne un score de compatibilite honnete. Tu sais exactement ou tu en es et comment te positionner.</div>
-          </div>
-        </div>
-      </div>
+    <div class="text-center" style="margin-bottom:3rem">
+      <div class="section-tag">Your first wins</div>
+      <h2>From zero to "ready to apply"<br/>in 10 minutes</h2>
+      <p class="section-lead">Each step is a win. You move at your pace. The AI does the heavy lifting.</p>
     </div>
-  </div>
-</div>
-
-<!-- QUICK WINS -->
-<section class="wins-section" id="wins">
-  <div class="wrap">
-    <div class="wins-header">
-      <div class="section-tag">Tes victoires rapides</div>
-      <h2>De zero a "pret a postuler"<br/>en 4 etapes</h2>
-      <p class="section-lead">Chaque etape est une victoire. Tu avances a ton rythme. L'IA fait le gros du travail.</p>
-    </div>
-    <div class="wins-timeline reveal">
-      <div class="win-step">
-        <div class="win-num active">&#128172;</div>
-        <div class="win-time">2 minutes</div>
-        <div class="win-title">Bilan de competences</div>
-        <div class="win-desc">3 questions simples. L'IA construit ton profil professionnel complet. Tu decouvres tes forces.</div>
-        <div class="win-badge free">Gratuit</div>
+    <div class="wins-grid reveal">
+      <div class="win-card">
+        <div class="win-arrow">&rarr;</div>
+        <div class="win-icon">&#128075;</div>
+        <div class="win-time">2 min</div>
+        <div class="win-title">Skills assessment</div>
+        <div class="win-desc">Answer 3 simple questions. The AI builds your complete professional profile. Discover strengths you didn't know you had.</div>
+        <div class="win-badge free">Free</div>
       </div>
-      <div class="win-step">
-        <div class="win-num">&#128196;</div>
-        <div class="win-time">5 minutes</div>
-        <div class="win-title">Ton CV en ligne</div>
-        <div class="win-desc">Un CV pro genere automatiquement. Tu le relis, tu l'ajustes, tu le valides. Il est a toi.</div>
-        <div class="win-badge free">Gratuit</div>
+      <div class="win-card">
+        <div class="win-arrow">&rarr;</div>
+        <div class="win-icon">&#128196;</div>
+        <div class="win-time">5 min</div>
+        <div class="win-title">Your first CV</div>
+        <div class="win-desc">A professional CV generated automatically. Review it, tweak it, own it. LaTeX-typeset, ATS-optimized, ready to download as PDF.</div>
+        <div class="win-badge free">Free</div>
       </div>
-      <div class="win-step">
-        <div class="win-num">&#127919;</div>
-        <div class="win-time">10 minutes</div>
-        <div class="win-title">Match avec les offres</div>
-        <div class="win-desc">Radar scanne 6+ plateformes et te montre uniquement les offres qui te correspondent. Score, analyse, recommandation.</div>
-        <div class="win-badge free">Gratuit</div>
+      <div class="win-card">
+        <div class="win-arrow">&rarr;</div>
+        <div class="win-icon">&#127919;</div>
+        <div class="win-time">10 min</div>
+        <div class="win-title">Your best matches</div>
+        <div class="win-desc">Radar scans 9 platforms and shows only the jobs that fit you. Score, analysis, and a clear recommendation for each one.</div>
+        <div class="win-badge free">Free</div>
       </div>
-      <div class="win-step">
-        <div class="win-num">&#128640;</div>
-        <div class="win-time">Le jackpot</div>
-        <div class="win-title">Candidature parfaite</div>
-        <div class="win-desc">CV sur-mesure + pitch personnalise + suivi automatique. Tu postules avec confiance. Le bon job, le bon profil.</div>
+      <div class="win-card featured">
+        <div class="win-icon">&#128640;</div>
+        <div class="win-time">The jackpot</div>
+        <div class="win-title">Perfect application</div>
+        <div class="win-desc">Custom CV + personalized pitch + auto-fill forms + smart follow-ups. Apply with total confidence. The right job, the right you.</div>
         <div class="win-badge pro">Pro</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="hiw-section" id="how">
-  <div class="wrap">
-    <div class="section-tag">Simple comme bonjour</div>
-    <h2>Pas de formulaire interminable.<br/>Juste une conversation.</h2>
-    <p class="section-lead">Radar fonctionne comme un ami qui t'aide. Tu parles, l'IA comprend, et les resultats arrivent.</p>
-    <div class="hiw-grid reveal">
-      <div class="hiw-card">
-        <div class="hiw-num">Step 01</div>
-        <div class="hiw-icon">&#128075;</div>
-        <div class="hiw-title">Dis-nous qui tu es</div>
-        <div class="hiw-desc">Raconte ton parcours en quelques phrases. Pas besoin de CV existant. L'IA structure tout et te propose un profil complet a valider.</div>
-      </div>
-      <div class="hiw-card">
-        <div class="hiw-num">Step 02</div>
-        <div class="hiw-icon">&#128270;</div>
-        <div class="hiw-title">On cherche pour toi</div>
-        <div class="hiw-desc">Radar scanne APEC, LinkedIn, Indeed, WTTJ, France Travail, Cadremploi en temps reel. Chaque offre est analysee et scoree pour toi.</div>
-      </div>
-      <div class="hiw-card">
-        <div class="hiw-num">Step 03</div>
-        <div class="hiw-icon">&#9889;</div>
-        <div class="hiw-title">Postule en 1 clic</div>
-        <div class="hiw-desc">CV taille pour l'offre, pitch personnalise, tout est pret. Tu relis, tu valides, tu envoies. Radar suit ta candidature ensuite.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMO UI -->
-<div class="demo-section" id="demo">
-  <div class="wrap">
-    <div class="demo-grid">
-      <div class="demo-text">
-        <div class="section-tag">La promesse</div>
-        <h2>Quand tu es pret,<br/>partage-le au monde</h2>
-        <p>Ton profil Radar est ton arme secrete. Tu le construis a ton rythme. Tu le valides toi-meme. Et quand tu es pret, un lien suffit pour que les recruteurs voient le meilleur de toi.</p>
-        <div class="demo-features">
-          <div class="demo-feat"><div class="demo-feat-check">&#10003;</div>Profil professionnel complet genere par l'IA</div>
-          <div class="demo-feat"><div class="demo-feat-check">&#10003;</div>CV PDF telechargeable, design pro (LaTeX)</div>
-          <div class="demo-feat"><div class="demo-feat-check">&#10003;</div>Score de compatibilite pour chaque offre</div>
-          <div class="demo-feat"><div class="demo-feat-check">&#10003;</div>Pitch personnalise auto-genere</div>
-          <div class="demo-feat"><div class="demo-feat-check">&#10003;</div>Suivi de candidatures avec relances intelligentes</div>
-        </div>
-        <a href="#cta" class="btn-primary">Creer mon profil &rarr;</a>
-      </div>
-      <div class="reveal">
-        <div class="ui-card">
-          <div class="ui-card-top">
-            <div class="ui-card-label">Analyse de compatibilite</div>
-            <div class="badge green"><div class="badge-dot"></div>Strong match</div>
-          </div>
-          <div class="score-row">
-            <div class="score-ring-wrap">
-              <svg viewBox="0 0 88 88" width="88" height="88">
-                <circle cx="44" cy="44" r="36" fill="none" stroke="#f0f2f7" stroke-width="6"/>
-                <circle cx="44" cy="44" r="36" fill="none" stroke="#1b4ef3" stroke-width="6" stroke-dasharray="226" stroke-dashoffset="43" stroke-linecap="round" transform="rotate(-90 44 44)" style="animation:ringIn 1.3s ease both"/>
-                <style>@keyframes ringIn{from{stroke-dashoffset:226}to{stroke-dashoffset:43}}</style>
-                <text x="44" y="40" text-anchor="middle" font-family="Syne" font-weight="800" font-size="20" fill="#0d1117">81</text>
-                <text x="44" y="53" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#8b91a0" letter-spacing="1">/100</text>
-              </svg>
-            </div>
-            <div class="score-details">
-              <div class="score-position">Data Engineer</div>
-              <div class="score-company">TotalEnergies &middot; Paris</div>
-              <div class="skill-bars">
-                <div class="skill-row"><div class="skill-name">Skills</div><div class="skill-track"><div class="skill-fill b" style="width:88%"></div></div><div class="skill-pct">88%</div></div>
-                <div class="skill-row"><div class="skill-name">Exp.</div><div class="skill-track"><div class="skill-fill g" style="width:76%"></div></div><div class="skill-pct">76%</div></div>
-                <div class="skill-row"><div class="skill-name">Secteur</div><div class="skill-track"><div class="skill-fill a" style="width:92%"></div></div><div class="skill-pct">92%</div></div>
-                <div class="skill-row"><div class="skill-name">Formation</div><div class="skill-track"><div class="skill-fill b2" style="width:80%"></div></div><div class="skill-pct">80%</div></div>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="insight">
-            <div class="insight-label">Recommandation IA</div>
-            <div class="insight-text">"Mets en avant ton experience PostGIS et analyse spatiale - directement aligne avec les exigences du poste."</div>
-          </div>
-          <div class="chip-row">
-            <span class="chip g">PostGIS &mdash; match</span>
-            <span class="chip g">Python &mdash; match</span>
-            <span class="chip a">R &mdash; partiel</span>
-            <span class="chip r">Spark &mdash; a developper</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<!-- PERSONAS -->
-<section class="personas-section" id="personas">
+<!-- ============================================================ -->
+<!-- ALL FEATURES -->
+<!-- ============================================================ -->
+<section class="features-section" id="features">
   <div class="wrap">
-    <div class="section-tag">Pour qui ?</div>
-    <h2>Radar est fait pour toi si...</h2>
-    <p class="section-lead">Que tu sois en recherche active, freelance ou en reconversion, Radar s'adapte a ta situation.</p>
-    <div class="personas-grid reveal">
-      <div class="persona-card">
-        <div class="persona-avatar a">&#128105;&#8205;&#128187;</div>
-        <div class="persona-name">Sarah, 28 ans</div>
-        <div class="persona-role">Data Analyst &middot; en recherche active</div>
-        <div class="persona-pain">"J'envoie 5 CV par jour et j'ai l'impression que personne ne les lit. Je sais plus quoi ecrire."</div>
-        <div class="persona-win">Victoire : 1er CV personnalise en 5 min</div>
+    <div class="section-tag">Everything you need</div>
+    <h2>10 features that change<br/>how you job hunt</h2>
+    <p class="section-lead">Every feature is built to save you time and increase your chances. No fluff.</p>
+    <div class="feat-grid reveal">
+      <div class="feat-card">
+        <div class="feat-icon">&#127919;</div>
+        <div class="feat-title">AI job matching</div>
+        <div class="feat-desc">Claude AI scores every job 0&ndash;100 against your profile. Skills, experience, sector, education &mdash; with a clear explanation of why.</div>
+        <div class="feat-tag">All plans</div>
       </div>
-      <div class="persona-card">
-        <div class="persona-avatar b">&#128104;&#8205;&#128295;</div>
-        <div class="persona-name">Karim, 35 ans</div>
-        <div class="persona-role">Freelance Dev &middot; multi-plateformes</div>
-        <div class="persona-pain">"Je rate des missions parce que je vois les annonces trop tard. J'ai pas le temps de surveiller 5 sites."</div>
-        <div class="persona-win">Victoire : alertes temps reel sur 6 plateformes</div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128196;</div>
+        <div class="feat-title">AI CV tailoring</div>
+        <div class="feat-desc">A different CV for every role, generated in 30 seconds. LaTeX-typeset, professional, ATS-optimized. Never send a generic CV again.</div>
+        <div class="feat-tag">3/month free &middot; unlimited pro</div>
       </div>
-      <div class="persona-card">
-        <div class="persona-avatar c">&#128105;&#8205;&#127891;</div>
-        <div class="persona-name">Marie, 42 ans</div>
-        <div class="persona-role">En reconversion &middot; ancienne RH</div>
-        <div class="persona-pain">"Je sais pas comment traduire mes competences RH vers le digital. Mon CV fait ancien."</div>
-        <div class="persona-win">Victoire : bilan de competences + nouveau CV</div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128200;</div>
+        <div class="feat-title">ATS scoring</div>
+        <div class="feat-desc">See your keyword coverage score before and after tailoring. Know exactly how much Radar improved your chances. Average: +35 points.</div>
+        <div class="feat-tag">All plans</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#9889;</div>
+        <div class="feat-title">Real-time alerts</div>
+        <div class="feat-desc">Push notifications within 90 seconds of a matching job being posted. Be the first to apply &mdash; before most people even open their laptop.</div>
+        <div class="feat-tag">Pro</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128172;</div>
+        <div class="feat-title">AI pitch generation</div>
+        <div class="feat-desc">A personalized cover letter or pitch generated alongside your CV. Platform-aware: short for gigs, structured for full-time roles.</div>
+        <div class="feat-tag">3/month free &middot; unlimited pro</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128218;</div>
+        <div class="feat-title">Multi-CV catalogue</div>
+        <div class="feat-desc">Store multiple CVs tagged by job type. Radar auto-selects the best base CV for each role before tailoring. Your best foot forward, every time.</div>
+        <div class="feat-tag">1 free &middot; unlimited pro</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128203;</div>
+        <div class="feat-title">Application tracker</div>
+        <div class="feat-desc">Every application logged with status, score, notes, dates. Filter by status, sort by date. Nothing falls through the cracks.</div>
+        <div class="feat-tag">30 days free &middot; unlimited pro</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128276;</div>
+        <div class="feat-title">Smart follow-ups</div>
+        <div class="feat-desc">After 7 days with no response, Radar drafts a polite follow-up email. One click to copy, one click to mark as sent. Never ghost an opportunity.</div>
+        <div class="feat-tag">Pro</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">&#128187;</div>
+        <div class="feat-title">Auto-fill extension</div>
+        <div class="feat-desc">Chrome extension detects application forms (Workday, Greenhouse, Lever) and pre-fills them from your profile. You review, you submit.</div>
+        <div class="feat-tag">Pro &middot; Chrome</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- PLATFORMS -->
+<!-- ============================================================ -->
+<section class="platforms-section" id="platforms">
+  <div class="wrap">
+    <div class="section-tag">9 platforms, one dashboard</div>
+    <h2>Every job site.<br/>One place to rule them all.</h2>
+    <p class="section-lead">Stop checking 5 tabs every morning. Radar watches them all and tells you when something matches.</p>
+    <div class="plat-grid" style="margin-top:2.5rem">
+      <div class="plat-pill"><span class="dot live"></span>France Travail</div>
+      <div class="plat-pill"><span class="dot live"></span>APEC</div>
+      <div class="plat-pill"><span class="dot live"></span>Indeed France</div>
+      <div class="plat-pill"><span class="dot live"></span>Welcome to the Jungle</div>
+      <div class="plat-pill"><span class="dot live"></span>HelloWork</div>
+      <div class="plat-pill"><span class="dot soon"></span>Cadremploi</div>
+      <div class="plat-pill"><span class="dot soon"></span>Malt</div>
+      <div class="plat-pill"><span class="dot soon"></span>Monster FR</div>
+      <div class="plat-pill"><span class="dot soon"></span>LinkedIn Jobs</div>
+    </div>
+    <div class="plat-sub" style="margin-top:1rem">
+      <span style="color:#34d399">&#9679;</span> Live now &nbsp;&nbsp;
+      <span style="color:#f59e0b">&#9679;</span> Coming this month
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- HOW IT WORKS -->
+<!-- ============================================================ -->
+<section id="how">
+  <div class="wrap">
+    <div class="pipeline-grid">
+      <div>
+        <div class="section-tag">How it works</div>
+        <h2>From job posted to<br/>CV ready in 90 seconds</h2>
+        <p class="section-lead">The entire pipeline is automated. You only step in when it's time to review and hit send.</p>
+        <div class="pipeline-steps reveal">
+          <div class="pipe-step active">
+            <div class="pipe-num">01</div>
+            <div>
+              <div class="pipe-label">Build your profile</div>
+              <div class="pipe-desc">Upload a CV or tell us about yourself. The AI structures everything and creates your professional profile.</div>
+              <div class="pipe-time">Once &middot; 5 minutes</div>
+            </div>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">02</div>
+            <div>
+              <div class="pipe-label">Radar scans continuously</div>
+              <div class="pipe-desc">Every 60 seconds, Radar polls all your enabled platforms. New jobs are detected, parsed, and scored against your profile.</div>
+              <div class="pipe-time">Automatic &middot; 24/7</div>
+            </div>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">03</div>
+            <div>
+              <div class="pipe-label">Match found &rarr; CV + pitch generated</div>
+              <div class="pipe-desc">Score above your threshold? Radar instantly generates a tailored CV, calculates ATS improvement, and writes a pitch.</div>
+              <div class="pipe-time">Automatic &middot; 30 seconds</div>
+            </div>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-num">04</div>
+            <div>
+              <div class="pipe-label">You review, you send</div>
+              <div class="pipe-desc">Push notification with everything ready. Review the CV diff, read the pitch, download PDF. One click to track the application.</div>
+              <div class="pipe-time">You &middot; 2 minutes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <div class="pipeline-wrap">
+          <div class="pipeline-header">
+            <div class="pipeline-h-title">My applications</div>
+            <div class="pipeline-h-count">5 active</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#1b4ef3"></div>
+            <div class="p-info"><div class="p-title">Data Engineer</div><div class="p-co">TotalEnergies &middot; Paris</div></div>
+            <div class="p-score" style="color:#1b4ef3">81</div>
+            <div class="p-status ps-new">CV ready</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#0a8a5c"></div>
+            <div class="p-info"><div class="p-title">GIS Analyst</div><div class="p-co">SNCF &middot; Lyon</div></div>
+            <div class="p-score" style="color:#0a8a5c">91</div>
+            <div class="p-status ps-sent">Sent</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#c96b00"></div>
+            <div class="p-info"><div class="p-title">Spatial Data Analyst</div><div class="p-co">Airbus &middot; Toulouse</div></div>
+            <div class="p-score" style="color:#c96b00">77</div>
+            <div class="p-status ps-interview">Interview</div>
+          </div>
+          <div class="pipeline-row">
+            <div class="p-dot" style="background:#0a8a5c"></div>
+            <div class="p-info"><div class="p-title">ML Engineer</div><div class="p-co">Veolia &middot; Nantes</div></div>
+            <div class="p-score" style="color:#0a8a5c">88</div>
+            <div class="p-status ps-offer">Offer!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PERSONAS -->
+<!-- ============================================================ -->
+<section class="personas-section" id="personas">
+  <div class="wrap">
+    <div class="section-tag">Built for you</div>
+    <h2>Whether you're hunting,<br/>freelancing, or switching</h2>
+    <p class="section-lead">Radar adapts to your situation. Three profiles, one tool.</p>
+    <div class="personas-grid reveal">
+      <div class="persona-card">
+        <div class="persona-emoji">&#128105;&#8205;&#128187;</div>
+        <div class="persona-name">Sarah, 28</div>
+        <div class="persona-role">Data Analyst &middot; active job search</div>
+        <div class="persona-quote">"I send 5 CVs a day and never hear back. What am I doing wrong?"</div>
+        <div class="persona-win">First tailored CV in 5 min. ATS score +40 pts.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-emoji">&#128104;&#8205;&#128187;</div>
+        <div class="persona-name">Karim, 35</div>
+        <div class="persona-role">Freelance dev &middot; multi-platform</div>
+        <div class="persona-quote">"I miss gigs because I see posts too late. Can't watch 5 sites all day."</div>
+        <div class="persona-win">Real-time alerts across 9 platforms. Never late again.</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-emoji">&#128105;&#8205;&#127891;</div>
+        <div class="persona-name">Marie, 42</div>
+        <div class="persona-role">Career switch &middot; ex-HR manager</div>
+        <div class="persona-quote">"How do I translate 15 years of HR into a tech resume?"</div>
+        <div class="persona-win">AI skills assessment + fresh CV for a new career.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- METRICS -->
+<!-- ============================================================ -->
 <div class="metrics-section">
   <div class="wrap">
     <div class="metrics-grid reveal">
       <div class="metric">
-        <span class="metric-num"><span>6</span>+</span>
-        <span class="metric-label">Plateformes scannees<br/>en temps reel</span>
+        <span class="metric-num"><span>9</span></span>
+        <span class="metric-label">Job platforms<br/>scanned in real-time</span>
       </div>
       <div class="metric">
-        <span class="metric-num"><span>30</span>s</span>
-        <span class="metric-label">Pour generer un<br/>CV personnalise</span>
+        <span class="metric-num"><span>90</span>s</span>
+        <span class="metric-label">From job posted to<br/>CV + pitch ready</span>
       </div>
       <div class="metric">
-        <span class="metric-num"><span>10</span>min</span>
-        <span class="metric-label">De zero a<br/>"pret a postuler"</span>
+        <span class="metric-num">+<span>35</span></span>
+        <span class="metric-label">Average ATS score<br/>improvement per CV</span>
       </div>
       <div class="metric">
         <span class="metric-num"><span>0</span>&euro;</span>
-        <span class="metric-label">Pour commencer<br/>et obtenir ton 1er CV</span>
+        <span class="metric-label">To start and get<br/>your first 3 CVs</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MENTOR -->
-<section class="mentor-section">
+<!-- ============================================================ -->
+<!-- PRICING -->
+<!-- ============================================================ -->
+<section class="pricing-section" id="pricing">
   <div class="wrap">
-    <div class="mentor-badge">&#127891; Incube au Wagon</div>
-    <h2>Construit par des gens<br/>qui ont galere aussi</h2>
-    <p class="mentor-text" style="margin-top:1.2rem">
-      Radar est ne d'une frustration reelle. Trois builders, un hackathon, et la conviction que <strong>chercher un travail ne devrait pas etre un travail a plein temps</strong>. Mentore par l'equipe du Wagon, construit avec Claude AI et Supabase.
-    </p>
+    <div class="text-center" style="margin-bottom:3rem">
+      <div class="section-tag">Simple pricing</div>
+      <h2>Start free. Upgrade when<br/>you're ready to go all-in.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-amount">0&euro;</div>
+        <div class="price-desc">Everything you need to get started and land your first interviews.</div>
+        <div class="price-features">
+          <div class="price-feat"><span class="check">&#10003;</span> 2 platforms monitored</div>
+          <div class="price-feat"><span class="check">&#10003;</span> 3 tailored CVs / month</div>
+          <div class="price-feat"><span class="check">&#10003;</span> 3 AI pitches / month</div>
+          <div class="price-feat"><span class="check">&#10003;</span> ATS scoring</div>
+          <div class="price-feat"><span class="check">&#10003;</span> 1 base CV</div>
+          <div class="price-feat"><span class="check">&#10003;</span> 30 days application history</div>
+          <div class="price-feat"><span class="cross">&mdash;</span> <span style="color:var(--ink3)">Real-time push alerts</span></div>
+          <div class="price-feat"><span class="cross">&mdash;</span> <span style="color:var(--ink3)">Smart follow-ups</span></div>
+          <div class="price-feat"><span class="cross">&mdash;</span> <span style="color:var(--ink3)">Auto-fill extension</span></div>
+        </div>
+        <a href="#cta" class="price-btn secondary">Start free</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Most popular</div>
+        <div class="price-name">Pro</div>
+        <div class="price-amount">14&euro; <span>/month</span></div>
+        <div class="price-desc">For serious job hunters who want every advantage.</div>
+        <div class="price-features">
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>All 9 platforms</strong></div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Unlimited</strong> tailored CVs</div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Unlimited</strong> AI pitches</div>
+          <div class="price-feat"><span class="check">&#10003;</span> ATS scoring</div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Unlimited</strong> base CVs</div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Unlimited</strong> application history</div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Real-time push alerts</strong></div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Smart follow-ups</strong></div>
+          <div class="price-feat"><span class="check">&#10003;</span> <strong>Auto-fill extension</strong></div>
+        </div>
+        <a href="#cta" class="price-btn primary">Go Pro &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- CTA -->
+<!-- ============================================================ -->
 <section class="cta-section" id="cta">
   <svg class="cta-ring" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
     <circle cx="350" cy="350" r="80" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".1"/>
@@ -517,26 +701,26 @@ footer{background:var(--bg);border-top:1px solid var(--rule);padding:1.8rem 2.5r
     <circle cx="350" cy="350" r="330" fill="none" stroke="#1b4ef3" stroke-width=".7" opacity=".04"/>
   </svg>
   <div class="wrap">
-    <div class="section-tag" style="justify-content:center">C'est parti</div>
-    <h2>Ton prochain job est deja en ligne.<br/><span style="color:var(--blue)">Trouve-le avec confiance.</span></h2>
-    <p>Pas de formulaire. Pas d'inscription obligatoire. Juste une conversation avec l'IA, et en 10 minutes tu as ton premier CV personnalise et tes premieres offres matchees.</p>
+    <div class="section-tag" style="justify-content:center">Let's go</div>
+    <h2>Your next role is already online.<br/><span style="color:var(--blue)">Be the first to find it.</span></h2>
+    <p>Create your profile in 2 minutes. Get your first tailored CV in 5. Start applying with confidence today.</p>
     <div class="cta-actions">
-      <a href="#" class="btn-primary big">Lancer mon bilan gratuit &rarr;</a>
-      <a href="#how" class="btn-outline">Revoir les etapes</a>
+      <a href="#" class="btn-primary big">Create my profile &rarr;</a>
+      <a href="#how" class="btn-outline">See the pipeline</a>
     </div>
-    <div class="cta-sub">Gratuit &middot; Sans compte &middot; Resultats immediats</div>
+    <div class="cta-sub">Free &middot; No credit card &middot; Results in minutes</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Radar</div>
-  <div class="footer-copy">Hackathon Le Wagon 2026 &middot; Built with Claude AI + Supabase</div>
+  <div class="footer-copy">Built with Claude AI + Supabase &middot; 2026</div>
   <div class="footer-links">
-    <a href="#empathy">Pourquoi</a>
-    <a href="#wins">Victoires</a>
-    <a href="#personas">Pour qui</a>
-    <a href="#cta">Commencer</a>
+    <a href="#features">Features</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#cta">Start</a>
   </div>
 </footer>
 
